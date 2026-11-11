@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Video Loop</title>
+
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <link
+        rel="stylesheet"
+        href="teste-sincronizacao-v2.css">
+
+</head>
+
+<body data-theme="dark">
+
+    <div
+        class="background-decorations"
+        aria-hidden="true">
+    </div>
+
+    <nav class="site-nav" aria-label="Navegação principal" data-i18n-aria-label="nav.label">
+
+        <div class="site-nav-links">
+            <a href="index.html" data-i18n="nav.home">Início</a>
+            <a href="funcionalidade.html" data-i18n="nav.creator">Criar GIF, clipe e print</a>
+            <a href="pagina-3.html" aria-current="page" data-i18n="nav.page3">Video Loop</a>
+            <a href="pagina-4.html" data-i18n="nav.page4">Página 4</a>
+            <a href="pagina-5.html" data-i18n="nav.page5">Página 5</a>
+            <a href="modelos.html" data-i18n="nav.models">Modelos</a>
+        </div>
+
+        <div class="language-selector">
+            <button id="languageButton" class="language-button" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="languageMenu">
+                <span id="languageFlag" aria-hidden="true">🇧🇷</span>
+                <span id="languageName">Português</span>
+                <span class="language-chevron" aria-hidden="true">▾</span>
+            </button>
+            <div id="languageMenu" class="language-menu" hidden>
+                <button type="button" data-language="pt-BR"><span aria-hidden="true">🇧🇷</span><span data-i18n="language.portuguese">Português (Brasil)</span></button>
+                <button type="button" data-language="en"><span aria-hidden="true">🇺🇸</span><span data-i18n="language.english">English</span></button>
+            </div>
+        </div>
+
+        <a class="profile-nav-link" href="perfil.html" data-i18n-aria-label="nav.profile" data-i18n-title="nav.profile">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="8" r="4"></circle>
+                <path d="M4.5 21a7.5 7.5 0 0 1 15 0"></path>
+            </svg>
+        </a>
+
+        <div class="site-settings-selector">
+            <button id="siteSettingsButton" class="language-button site-settings-button" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="siteSettingsMenu" data-i18n-aria-label="siteSettings.button" data-i18n-title="siteSettings.button">
+                <span class="windows-icon" aria-hidden="true">&#xE713;</span>
+            </button>
+            <div id="siteSettingsMenu" class="site-settings-menu" hidden>
+                <label class="settings-option">
+                    <input type="checkbox" id="siteLightMode">
+                    <span data-i18n="siteSettings.lightMode">Light mode</span>
+                </label>
+            </div>
+        </div>
+
+    </nav>
+
+    <main class="container">
+
+        <header class="page-header">
+            <h1>Video Loop</h1>
+            <p>Select a segment of a video and play it continuously in a loop.</p>
+        </header>
+
+        <section class="loop-panel" aria-label="Video loop editor">
+
+            <input id="loopVideoInput" type="file" accept="video/*" hidden>
+
+            <div class="loop-file-controls">
+                <button id="chooseLoopVideo" class="creator-button" type="button">
+                    <span class="windows-icon" aria-hidden="true">&#xE714;</span>
+                    <span>Choose a video</span>
+                </button>
+
+                <div class="settings-selector loop-settings-selector">
+                    <button
+                        id="loopSettingsButton"
+                        class="creator-button"
+                        type="button"
+                        aria-expanded="false"
+                        aria-controls="loopSettingsMenu">
+                        <span class="windows-icon" aria-hidden="true">&#xE713;</span>
+                        <span>Settings</span>
+                    </button>
+
+                    <div id="loopSettingsMenu" class="settings-menu loop-settings-menu">
+                        <label class="settings-option">
+                            <input id="loopPingPong" type="checkbox">
+                            <span>Play forward and backward</span>
+                        </label>
+
+                        <div class="settings-slider-group">
+                            <label for="loopReverseAudioMode">Audio during backward playback</label>
+                            <select id="loopReverseAudioMode" class="loop-audio-mode">
+                                <option value="mute">Mute</option>
+                                <option value="normal">Play audio forward</option>
+                                <option value="reverse">Play audio backward</option>
+                            </select>
+                        </div>
+
+                        <label class="settings-option loop-fade-option">
+                            <input id="loopFade" type="checkbox">
+                            <span>Fade in/out (video and audio)</span>
+                        </label>
+
+                        <div class="settings-slider-group">
+                            <label for="loopFadeDuration">
+                                Fade duration: <output id="loopFadeDurationValue">0.5 s</output>
+                            </label>
+                            <input
+                                id="loopFadeDuration"
+                                type="range"
+                                min="0.1"
+                                max="3"
+                                value="0.5"
+                                step="0.1"
+                                disabled>
+                        </div>
+
+                        <p class="loop-settings-note">
+                            Fades apply to both the video and audio at the selected loop boundaries. Audio for the backward pass is captured during playback; audio modes support segments up to 120 seconds.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <p id="loopFileName" class="creator-file-name">No video selected</p>
+
+            <div class="creator-preview loop-preview">
+                <video id="loopVideo" controls playsinline preload="metadata" aria-label="Video loop preview"></video>
+                <canvas id="loopReverseCanvas" class="loop-reverse-canvas" aria-hidden="true"></canvas>
+
+                <div id="loopEmptyState" class="creator-empty-state">
+                    <span class="creator-empty-icon" aria-hidden="true">&#xE8B2;</span>
+                    <p>Your video preview will appear here</p>
+                </div>
+            </div>
+
+            <section class="trim-editor" aria-label="Loop segment selection">
+
+                <div class="trim-heading">
+                    <h2>Select loop segment</h2>
+                    <span>Drag the start and end markers</span>
+                </div>
+
+                <div class="trim-viewport">
+                    <div class="trim-timeline">
+                        <div class="trim-track"></div>
+                        <div id="loopSelection" class="trim-selection"></div>
+
+                        <input id="loopStart" class="trim-handle trim-start" type="range" min="0" max="10000" value="0" disabled aria-label="Loop start">
+                        <input id="loopEnd" class="trim-handle trim-end" type="range" min="0" max="10000" value="10000" disabled aria-label="Loop end">
+                    </div>
+                </div>
+
+                <div class="trim-times">
+                    <span>Start: <strong id="loopStartTime">00:00</strong></span>
+                    <span>End: <strong id="loopEndTime">00:00</strong></span>
+                </div>
+
+            </section>
+
+            <section class="timeline-zoom-editor" aria-label="Loop timeline zoom">
+                <div class="timeline-zoom-heading">
+                    <label for="loopTimelineZoom">Loop timeline zoom</label>
+                    <output id="loopTimelineZoomValue" for="loopTimelineZoom">1x</output>
+                </div>
+
+                <input
+                    id="loopTimelineZoom"
+                    class="timeline-zoom-slider"
+                    type="range"
+                    min="1"
+                    max="100"
+                    value="1"
+                    step="1"
+                    disabled
+                    aria-label="Zoom the loop selection timeline">
+            </section>
+
+            <div class="loop-export-duration">
+                <label for="loopOutputDuration" data-i18n="loop.outputDuration">
+                    Duração do vídeo final (segundos)
+                </label>
+                <input
+                    id="loopOutputDuration"
+                    type="number"
+                    min="1"
+                    step="1"
+                    value="120"
+                    disabled
+                    aria-describedby="loopOutputDurationHint">
+                <span id="loopOutputDurationHint" data-i18n="loop.outputDurationHint">
+                    O vídeo será gravado em tempo real e terá a duração escolhida.
+                </span>
+            </div>
+
+            <div class="creator-actions">
+                <button id="playLoop" class="creator-button" type="button" disabled>
+                    <span aria-hidden="true">&#xE768;</span>
+                    <span data-i18n="loop.play">Reproduzir loop</span>
+                </button>
+                <button id="pauseLoop" class="creator-button" type="button" disabled>
+                    <span aria-hidden="true">&#xE769;</span>
+                    <span data-i18n="loop.pause">Pausar</span>
+                </button>
+                <button id="stopLoop" class="creator-button" type="button" disabled>
+                    <span aria-hidden="true">&#xE71A;</span>
+                    <span data-i18n="loop.stop">Parar</span>
+                </button>
+                <button id="generateLoopVideo" class="creator-button" type="button" disabled>
+                    <span aria-hidden="true">&#xE8A5;</span>
+                    <span data-i18n="loop.generate">Gerar vídeo com loop</span>
+                </button>
+            </div>
+
+            <p id="loopStatus" class="creator-status" role="status" aria-live="polite"></p>
+
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+
+        <span data-i18n="footer.tagline">Video Studio · Ferramentas para vídeo</span>
+        <a href="patch-notes.html" data-i18n="footer.notes">Notas de atualização</a>
+        <a href="como-usar.html" data-i18n="footer.guide">Como usar o site</a>
+
+    </footer>
+
+    <script src="language.js"></script>
+    <script src="loop-video.js"></script>
+    <script src="feedback.js"></script>
+
+</body>
+
+</html>

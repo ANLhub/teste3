@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Video Rhythm</title>
+
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <link
+        rel="stylesheet"
+        href="teste-sincronizacao-v2.css">
+
+</head>
+
+<body data-theme="dark">
+
+    <div
+        class="background-decorations"
+        aria-hidden="true">
+    </div>
+
+    <dialog
+        id="developmentNotice"
+        class="model-dialog development-notice"
+        aria-labelledby="developmentNoticeTitle"
+        aria-describedby="developmentNoticeMessage">
+        <div class="development-notice-content">
+            <span class="development-notice-icon" aria-hidden="true">!</span>
+            <p class="development-notice-eyebrow" data-i18n="developmentNotice.eyebrow">Aviso de desenvolvimento</p>
+            <h2 id="developmentNoticeTitle" data-i18n="developmentNotice.title">Esta página ainda está em desenvolvimento</h2>
+            <p id="developmentNoticeMessage" data-i18n="developmentNotice.message">Algumas funcionalidades podem apresentar instabilidade ou não funcionar como esperado. Estamos trabalhando para melhorar a experiência.</p>
+            <button id="closeDevelopmentNotice" class="creator-button development-notice-close" type="button" autofocus data-i18n="developmentNotice.close">Entendi</button>
+        </div>
+    </dialog>
+
+    <nav class="site-nav" aria-label="Main navigation" data-i18n-aria-label="nav.label">
+
+        <div class="site-nav-links">
+            <a href="index.html" data-i18n="nav.home">Home</a>
+            <a href="funcionalidade.html" data-i18n="nav.creator">Create GIF, Clip & Screenshot</a>
+            <a href="pagina-3.html" data-i18n="nav.page3">Video Loop</a>
+            <a href="pagina-4.html" aria-current="page" data-i18n="nav.page4">Video Rhythm</a>
+            <a href="pagina-5.html" data-i18n="nav.page5">Page 5</a>
+            <a href="modelos.html" data-i18n="nav.models">Models</a>
+        </div>
+
+        <div class="language-selector">
+            <button id="languageButton" class="language-button" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="languageMenu">
+                <span id="languageFlag" aria-hidden="true">🇺🇸</span>
+                <span id="languageName">Português</span>
+                <span class="language-chevron" aria-hidden="true">▾</span>
+            </button>
+            <div id="languageMenu" class="language-menu" hidden>
+                <button type="button" data-language="pt-BR"><span aria-hidden="true">🇧🇷</span><span data-i18n="language.portuguese">Português (Brasil)</span></button>
+                <button type="button" data-language="en"><span aria-hidden="true">🇺🇸</span><span data-i18n="language.english">English</span></button>
+            </div>
+        </div>
+
+        <a class="profile-nav-link" href="perfil.html" data-i18n-aria-label="nav.profile" data-i18n-title="nav.profile">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="8" r="4"></circle>
+                <path d="M4.5 21a7.5 7.5 0 0 1 15 0"></path>
+            </svg>
+        </a>
+
+        <div class="site-settings-selector">
+            <button id="siteSettingsButton" class="language-button site-settings-button" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="siteSettingsMenu" data-i18n-aria-label="siteSettings.button" data-i18n-title="siteSettings.button">
+                <span class="windows-icon" aria-hidden="true">&#xE713;</span>
+            </button>
+            <div id="siteSettingsMenu" class="site-settings-menu" hidden>
+                <label class="settings-option">
+                    <input type="checkbox" id="siteLightMode">
+                    <span data-i18n="siteSettings.lightMode">Light mode</span>
+                </label>
+            </div>
+        </div>
+
+    </nav>
+
+    <main class="container">
+
+        <header class="page-header">
+            <h1>Video Rhythm</h1>
+            <p>Play a video and follow the colored beats moving across the track below.</p>
+        </header>
+
+        <section class="rhythm-panel" aria-label="Video rhythm game">
+
+            <input id="rhythmVideoInput" type="file" accept="video/*" hidden>
+
+            <div class="rhythm-toolbar">
+                <button id="chooseRhythmVideo" class="creator-button" type="button">
+                    <span class="windows-icon" aria-hidden="true">&#xE714;</span>
+                    <span>Choose a video</span>
+                </button>
+
+                <div class="settings-selector rhythm-settings-selector">
+                    <button
+                        id="rhythmSettingsButton"
+                        class="creator-button"
+                        type="button"
+                        aria-expanded="false"
+                        aria-controls="rhythmSettingsMenu">
+                        <span class="windows-icon" aria-hidden="true">&#xE713;</span>
+                        <span>Difficulty: <strong id="rhythmDifficultyLabel">Normal</strong></span>
+                    </button>
+
+                    <div id="rhythmSettingsMenu" class="settings-menu rhythm-settings-menu">
+                        <p class="rhythm-settings-heading">Game difficulty</p>
+                        <div class="rhythm-difficulty-options" role="group" aria-label="Game difficulty">
+                            <button type="button" data-difficulty="easy" aria-pressed="false">Easy</button>
+                            <button type="button" data-difficulty="normal" aria-pressed="true">Normal</button>
+                            <button type="button" data-difficulty="hard" aria-pressed="false">Hard</button>
+                            <button type="button" data-difficulty="expert" aria-pressed="false">Expert</button>
+                        </div>
+                        <p id="rhythmDifficultyDescription" class="rhythm-settings-note">
+                            A balanced stream with occasional simultaneous beats.
+                        </p>
+                        <fieldset class="rhythm-color-settings">
+                            <legend>Active ball colors</legend>
+                            <label class="rhythm-color-option">
+                                <input type="checkbox" data-rhythm-color="pink" checked>
+                                <span class="rhythm-color-swatch rhythm-color-pink" aria-hidden="true"></span>
+                                <span>Pink</span>
+                            </label>
+                            <label class="rhythm-color-option">
+                                <input type="checkbox" data-rhythm-color="blue">
+                                <span class="rhythm-color-swatch rhythm-color-blue" aria-hidden="true"></span>
+                                <span>Blue</span>
+                            </label>
+                            <label class="rhythm-color-option">
+                                <input type="checkbox" data-rhythm-color="orange">
+                                <span class="rhythm-color-swatch rhythm-color-orange" aria-hidden="true"></span>
+                                <span>Orange</span>
+                            </label>
+                            <label class="rhythm-color-option">
+                                <input type="checkbox" data-rhythm-color="purple">
+                                <span class="rhythm-color-swatch rhythm-color-purple" aria-hidden="true"></span>
+                                <span>Purple</span>
+                            </label>
+                        </fieldset>
+                    </div>
+                </div>
+
+                <div class="settings-selector rhythm-help-selector">
+                    <button
+                        id="rhythmHelpButton"
+                        class="creator-button"
+                        type="button"
+                        aria-expanded="false"
+                        aria-controls="rhythmHelpPopup">
+                        <span class="windows-icon" aria-hidden="true">&#xE897;</span>
+                        <span>How to play</span>
+                    </button>
+
+                    <div
+                        id="rhythmHelpPopup"
+                        class="settings-menu rhythm-help-popup"
+                        role="dialog"
+                        aria-label="How to play"
+                        hidden>
+                        <div class="rhythm-help-heading">
+                            <h2>How to play</h2>
+                            <button
+                                id="rhythmHelpClose"
+                                class="rhythm-help-close"
+                                type="button"
+                                aria-label="Close instructions">
+                                &times;
+                            </button>
+                        </div>
+                        <ul>
+                            <li>Placeholder: press play on your video to start the rhythm game.</li>
+                            <li>Watch the colored orbs travel along the track below the video.</li>
+                            <li>Placeholder: tap when an orb reaches the shared target on the left.</li>
+                            <li>Choose a difficulty to change the speed and note patterns.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <p id="rhythmFileName" class="creator-file-name">No video selected</p>
+
+            <div id="rhythmPreview" class="creator-preview rhythm-preview">
+                <video id="rhythmVideo" controls playsinline preload="metadata" aria-label="Video rhythm game preview"></video>
+                <div id="rhythmEmptyState" class="creator-empty-state">
+                    <span class="creator-empty-icon" aria-hidden="true">&#xE8B2;</span>
+                    <p>Choose a video to start the rhythm game</p>
+                </div>
+            </div>
+
+            <section class="rhythm-horizontal-section" aria-label="Horizontal rhythm track">
+                <h2>Color track</h2>
+                <p>Colored orbs travel across one horizontal line to the shared target on the left.</p>
+                <div id="rhythmHorizontalTrack" class="rhythm-horizontal-track">
+                    <canvas id="rhythmHorizontalCanvas" class="rhythm-horizontal-canvas" aria-hidden="true"></canvas>
+                </div>
+            </section>
+
+            <p id="rhythmStatus" class="creator-status" role="status" aria-live="polite">
+                Horizontal beats are generated to the selected video's duration.
+            </p>
+
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+
+        <span data-i18n="footer.tagline">Video Studio · Video tools</span>
+        <a href="patch-notes.html" data-i18n="footer.notes">Patch Notes</a>
+        <a href="como-usar.html" data-i18n="footer.guide">How to use the site</a>
+
+    </footer>
+
+    <script src="language.js"></script>
+    <script src="development-notice.js"></script>
+    <script src="pagina-4.js"></script>
+    <script src="feedback.js"></script>
+
+</body>
+
+</html>

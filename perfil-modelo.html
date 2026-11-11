@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="title.profile">Perfil do modelo</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="teste-sincronizacao-v2.css">
+</head>
+
+<body data-theme="dark">
+    <div class="background-decorations" aria-hidden="true"></div>
+
+    <nav class="site-nav" aria-label="Navegação principal" data-i18n-aria-label="nav.label">
+        <div class="site-nav-links">
+            <a href="index.html" data-i18n="nav.home">Início</a>
+            <a href="funcionalidade.html" data-i18n="nav.creator">Criar GIF, clipe e print</a>
+            <a href="pagina-3.html" data-i18n="nav.page3">Loop de vídeo</a>
+            <a href="pagina-4.html" data-i18n="nav.page4">Video Rhythm</a>
+            <a href="pagina-5.html" data-i18n="nav.page5">Player aleatório</a>
+            <a href="modelos.html" data-i18n="nav.models">Modelos</a>
+        </div>
+
+        <div class="language-selector">
+            <button id="languageButton" class="language-button" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="languageMenu">
+                <span id="languageFlag" aria-hidden="true">🇧🇷</span>
+                <span id="languageName">Português</span>
+                <span class="language-chevron" aria-hidden="true">▾</span>
+            </button>
+            <div id="languageMenu" class="language-menu" hidden>
+                <button type="button" data-language="pt-BR"><span aria-hidden="true">🇧🇷</span><span data-i18n="language.portuguese">Português (Brasil)</span></button>
+                <button type="button" data-language="en"><span aria-hidden="true">🇺🇸</span><span data-i18n="language.english">English</span></button>
+            </div>
+        </div>
+
+        <a class="profile-nav-link" href="perfil.html" data-i18n-aria-label="nav.profile" data-i18n-title="nav.profile">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="8" r="4"></circle>
+                <path d="M4.5 21a7.5 7.5 0 0 1 15 0"></path>
+            </svg>
+        </a>
+
+        <div class="site-settings-selector">
+            <button id="siteSettingsButton" class="language-button site-settings-button" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="siteSettingsMenu" data-i18n-aria-label="siteSettings.button" data-i18n-title="siteSettings.button">
+                <span class="windows-icon" aria-hidden="true">&#xE713;</span>
+            </button>
+            <div id="siteSettingsMenu" class="site-settings-menu" hidden>
+                <label class="settings-option">
+                    <input type="checkbox" id="siteLightMode">
+                    <span data-i18n="siteSettings.lightMode">Light mode</span>
+                </label>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container profile-page">
+        <a class="profile-back" href="modelos.html" data-i18n="profile.back">← Voltar aos modelos</a>
+        <p id="profileStatus" class="models-page-status" role="alert" hidden></p>
+
+        <section id="modelProfile" class="model-profile" aria-live="polite" hidden>
+            <button id="editModelButton" class="profile-edit-button" type="button" aria-label="Editar modelo" data-i18n-aria-label="models.edit" data-i18n-title="models.edit" hidden>•••</button>
+            <div class="profile-photo-frame">
+                <img id="profilePhoto" class="profile-photo" alt="" hidden>
+                <div id="profilePhotoPlaceholder" class="sad-face-placeholder profile-photo-placeholder" role="img" hidden>
+                    <svg viewBox="0 0 100 100" aria-hidden="true" focusable="false">
+                        <circle cx="50" cy="50" r="36"></circle>
+                        <circle class="sad-face-eye" cx="38" cy="43" r="3"></circle>
+                        <circle class="sad-face-eye" cx="62" cy="43" r="3"></circle>
+                        <path d="M35 68 Q50 52 65 68"></path>
+                    </svg>
+                    <span class="sad-face-label" data-i18n="models.noImage">Sem imagem</span>
+                </div>
+            </div>
+            <div class="profile-content">
+                <h1 id="profileName"></h1>
+                <section class="profile-alternate-names" aria-labelledby="profileAlternateNamesHeading">
+                    <h2 id="profileAlternateNamesHeading" data-i18n="models.alternateNames">Outros nomes</h2>
+                    <p id="profileAlternateNames"></p>
+                </section>
+                <p id="profileDescription" class="profile-description" hidden></p>
+                <section class="profile-links-section" aria-labelledby="profileLinksHeading">
+                    <h2 id="profileLinksHeading" data-i18n="profile.linksHeading">Encontre o modelo em</h2>
+                    <div id="profileLinks" class="profile-links"></div>
+                    <p id="profileLinksEmpty" class="profile-links-empty" data-i18n="profile.linksEmpty" hidden>Este perfil ainda não tem links.</p>
+                </section>
+            </div>
+        </section>
+        <section id="profileGallerySection" class="profile-gallery-card" aria-labelledby="profileGalleryHeading" hidden>
+            <div class="profile-gallery-heading">
+                <h2 id="profileGalleryHeading" data-i18n="profile.galleryTitle">custom galeria</h2>
+                <input id="profileGalleryInput" type="file" accept="image/*" multiple hidden>
+                <div class="profile-gallery-heading-actions">
+                    <button id="addProfileGalleryPhotos" class="creator-button" type="button" data-i18n="profile.galleryAdd">Adicionar fotos</button>
+                    <div class="profile-gallery-settings-selector">
+                        <button id="profileGallerySettingsButton" class="language-button site-settings-button profile-gallery-settings-button" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="profileGallerySettings" data-i18n-title="profile.gallerySettings" data-i18n-aria-label="profile.gallerySettings">
+                            <span class="windows-icon" aria-hidden="true">&#xE713;</span>
+                        </button>
+                        <div id="profileGallerySettings" class="site-settings-menu profile-gallery-settings-menu" hidden>
+                            <label class="settings-option" for="confirmProfileGalleryDelete">
+                                <input id="confirmProfileGalleryDelete" type="checkbox" checked>
+                                <span data-i18n="profile.galleryConfirmDelete">Sempre confirmar a exclusão de imagens</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p id="profileGalleryStatus" class="profile-gallery-status" role="status" aria-live="polite" hidden></p>
+            <p id="profileGalleryEmpty" class="profile-links-empty" data-i18n="profile.galleryEmpty">Nenhuma foto adicionada ainda.</p>
+            <div id="profileGallery" class="profile-gallery"></div>
+        </section>
+        <dialog id="profileGalleryViewer" class="profile-gallery-viewer" aria-label="Visualizador da galeria" data-i18n-aria-label="profile.galleryViewer">
+            <div class="profile-gallery-viewer-content">
+                <div class="profile-gallery-viewer-toolbar">
+                    <button id="deleteProfileGalleryPhoto" class="profile-gallery-viewer-button profile-gallery-viewer-delete" type="button" aria-label="Excluir foto" data-i18n-aria-label="profile.galleryRemove" data-i18n-title="profile.galleryRemove">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M9 7V4h6v3m3 0-1 13H7L6 7m3 3v7m6-7v7"></path></svg>
+                    </button>
+                    <div class="profile-gallery-viewer-toolbar-end">
+                        <button id="zoomProfileGalleryPhoto" class="profile-gallery-viewer-button" type="button" aria-label="Ampliar foto" aria-pressed="false" data-i18n-aria-label="profile.galleryZoomIn" data-i18n-title="profile.galleryZoomIn">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"></circle><path d="m16 16 5 5"></path><path class="profile-gallery-zoom-plus-vertical" d="M10.8 7.8v6"></path><path d="M7.8 10.8h6"></path></svg>
+                        </button>
+                        <label class="profile-gallery-zoom-control">
+                            <input id="profileGalleryZoomIntensity" class="profile-gallery-zoom-slider" type="range" min="1.1" max="3" step="0.1" value="1.5" disabled data-i18n-aria-label="profile.galleryZoomIntensity">
+                        </label>
+                        <button id="closeProfileGalleryViewer" class="profile-gallery-viewer-button profile-gallery-viewer-close" type="button" aria-label="Fechar foto" data-i18n-aria-label="profile.galleryClose" data-i18n-title="profile.galleryClose">×</button>
+                    </div>
+                </div>
+                <button id="previousProfileGalleryPhoto" class="profile-gallery-viewer-button profile-gallery-viewer-nav profile-gallery-viewer-previous" type="button" aria-label="Foto anterior" data-i18n-aria-label="profile.galleryPrevious" data-i18n-title="profile.galleryPrevious">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"></path></svg>
+                </button>
+                <img id="profileGalleryViewerPhoto" class="profile-gallery-viewer-photo" alt="">
+                <button id="nextProfileGalleryPhoto" class="profile-gallery-viewer-button profile-gallery-viewer-nav profile-gallery-viewer-next" type="button" aria-label="Próxima foto" data-i18n-aria-label="profile.galleryNext" data-i18n-title="profile.galleryNext">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"></path></svg>
+                </button>
+                <p id="profileGalleryViewerPosition" class="profile-gallery-viewer-position" aria-live="polite"></p>
+            </div>
+        </dialog>
+        <section id="profileTagsSection" class="profile-tags-card" aria-labelledby="profileTagsHeading" hidden>
+            <h2 id="profileTagsHeading" data-i18n="profile.tagsHeading">Tags</h2>
+            <div id="profileTags" class="profile-tags"></div>
+        </section>
+
+        <dialog id="profileEditDialog" class="model-dialog" aria-labelledby="profileEditHeading">
+            <form id="profileEditForm" class="model-form">
+                <div class="model-form-heading">
+                    <h2 id="profileEditHeading" data-i18n="models.formEditHeading">Editar modelo</h2>
+                    <button id="closeProfileEdit" class="model-dialog-close" type="button" aria-label="Fechar" data-i18n-aria-label="models.close">×</button>
+                </div>
+
+                <label for="profileEditName" data-i18n="models.nameLabel">Nome</label>
+                <input id="profileEditName" type="text" maxlength="100" autocomplete="off" required>
+
+                <label for="profileEditAlternateNames" data-i18n="models.alternateNames">Outros nomes</label>
+                <textarea id="profileEditAlternateNames" rows="2" maxlength="500"></textarea>
+                <small class="model-photo-help" data-i18n="models.alternateNamesHelp">Separe os nomes por vírgula ou linha.</small>
+
+                <label for="profileEditDescription" data-i18n="models.descriptionLabel">Descrição</label>
+                <textarea id="profileEditDescription" rows="3" maxlength="500"></textarea>
+
+                <label for="profileEditTags" data-i18n="models.tagsLabel">Tags</label>
+                <textarea id="profileEditTags" rows="2" maxlength="500" placeholder="#tag1 #tag2"></textarea>
+                <small class="model-photo-help" data-i18n="models.tagsHelp">Separe as tags por espaço ou vírgula. Elas não aparecem no card.</small>
+
+                <fieldset class="model-links-editor">
+                    <legend data-i18n="models.linksLabel">Links do perfil</legend>
+                    <div id="profileEditLinks"></div>
+                    <button id="addProfileEditLink" class="model-form-cancel" type="button" data-i18n="models.addLink">+ Adicionar link</button>
+                </fieldset>
+
+                <label for="profileEditPhoto" data-i18n="models.photoLabel">Foto</label>
+                <input id="profileEditPhoto" type="file" accept="image/*">
+                <small class="model-photo-help" data-i18n="models.photoOptional">Deixe em branco para manter a foto atual. Baixe uma imagem da busca e selecione-a aqui; PNG/JPEG/BMP podem ser otimizadas ao salvar.</small>
+
+                <label for="profileEditCategory" data-i18n="models.categoryLabel">Categoria</label>
+                <select id="profileEditCategory" required>
+                    <option value="1" data-i18n="models.category1">OF</option>
+                    <option value="2" data-i18n="models.category2">PS</option>
+                    <option value="3" data-i18n="models.category3">CG</option>
+                    <option value="4" data-i18n="models.category4">AM</option>
+                    <option value="5" data-i18n="models.category5">TS</option>
+                </select>
+
+                <label for="profileEditRarity" data-i18n="models.rarityLabel">Raridade</label>
+                <select id="profileEditRarity" required>
+                    <option value="mythic" data-i18n="models.rarityMythic">Favoritas</option>
+                    <option value="legendary" data-i18n="models.rarityLegendary">Rainhas</option>
+                    <option value="epic" data-i18n="models.rarityEpic">Excelentes</option>
+                    <option value="rare" data-i18n="models.rarityRare">Muito boas</option>
+                    <option value="uncommon" data-i18n="models.rarityUncommon">Boas</option>
+                    <option value="common" data-i18n="models.rarityCommon">Outras</option>
+                </select>
+
+                <p id="profileEditStatus" class="model-form-status" role="status" aria-live="polite" hidden></p>
+
+                <div class="model-form-actions">
+                    <button id="cancelProfileEdit" class="model-form-cancel" type="button" data-i18n="models.cancel">Cancelar</button>
+                    <button id="saveProfileEdit" class="creator-button" type="submit" data-i18n="models.update">Salvar alterações</button>
+                </div>
+            </form>
+        </dialog>
+    </main>
+
+    <footer class="site-footer">
+        <span data-i18n="footer.tagline">Video Studio · Ferramentas para vídeo</span>
+        <a href="patch-notes.html" data-i18n="footer.notes">Notas de atualização</a>
+        <a href="como-usar.html" data-i18n="footer.guide">Como usar o site</a>
+    </footer>
+
+    <script src="language.js"></script>
+    <script src="model-link-utils.js"></script>
+    <script src="model-photo-utils.js"></script>
+    <script src="perfil-modelo.js"></script>
+</body>
+
+</html>

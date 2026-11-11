@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title data-i18n="title.home">Split View</title>
+
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <link
+        rel="stylesheet"
+        href="teste-sincronizacao-v2.css">
+
+</head>
+
+<body class="home-page" data-theme="dark">
+
+    <div
+        class="background-decorations"
+        aria-hidden="true">
+    </div>
+
+    <nav class="site-nav" aria-label="Navegação principal" data-i18n-aria-label="nav.label">
+
+        <div class="site-nav-links">
+
+            <a href="index.html" aria-current="page" data-i18n="nav.home">Split View</a>
+            <a href="funcionalidade.html" data-i18n="nav.creator">Media Generator</a>
+            <a href="pagina-3.html" data-i18n="nav.page3">Loop de vídeo</a>
+            <a href="pagina-4.html" data-i18n="nav.page4">Página 4</a>
+            <a href="pagina-5.html" data-i18n="nav.page5">Página 5</a>
+            <a href="modelos.html" data-i18n="nav.models">Modelos</a>
+
+        </div>
+
+        <div class="language-selector">
+
+            <button
+                id="languageButton"
+                class="language-button"
+                type="button"
+                aria-haspopup="true"
+                aria-expanded="false"
+                aria-controls="languageMenu">
+
+                <span id="languageFlag" aria-hidden="true">🇧🇷</span>
+                <span id="languageName">Português</span>
+                <span class="language-chevron" aria-hidden="true">▾</span>
+
+            </button>
+
+            <div id="languageMenu" class="language-menu" hidden>
+
+                <button type="button" data-language="pt-BR">
+                    <span aria-hidden="true">🇧🇷</span>
+                    <span data-i18n="language.portuguese">Português (Brasil)</span>
+                </button>
+
+                <button type="button" data-language="en">
+                    <span aria-hidden="true">🇺🇸</span>
+                    <span data-i18n="language.english">English</span>
+                </button>
+
+            </div>
+
+        </div>
+
+        <a
+            class="profile-nav-link"
+            href="perfil.html"
+            data-i18n-aria-label="nav.profile"
+            data-i18n-title="nav.profile">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="8" r="4"></circle>
+                <path d="M4.5 21a7.5 7.5 0 0 1 15 0"></path>
+            </svg>
+        </a>
+
+        <div class="site-settings-selector">
+
+            <button
+                id="siteSettingsButton"
+                class="language-button site-settings-button"
+                type="button"
+                aria-haspopup="true"
+                aria-expanded="false"
+                aria-controls="siteSettingsMenu"
+                data-i18n-aria-label="siteSettings.button"
+                data-i18n-title="siteSettings.button">
+                <span class="windows-icon" aria-hidden="true">&#xE713;</span>
+            </button>
+
+            <div id="siteSettingsMenu" class="site-settings-menu" hidden>
+
+                <label class="settings-option">
+                    <input type="checkbox" id="siteLightMode">
+                    <span data-i18n="siteSettings.lightMode">Light mode</span>
+                </label>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+    <main class="container">
+
+        <!--==================================================
+                            TITLE
+        ==================================================-->
+
+        <header class="page-header">
+
+            <h1 data-i18n="home.heading">
+                Seus vídeos, lado a lado
+            </h1>
+
+            <p data-i18n="home.description">
+                Escolha seus vídeos, organize como quiser e assista a todos juntos, em sincronia.
+            </p>
+
+        </header>
+
+
+        <!--==================================================
+                    TOOLBAR
+        ==================================================-->
+
+        <section class="top-controls">
+
+            <input
+                type="file"
+                id="multiVideoInput"
+                accept="video/*"
+                multiple
+                hidden>
+
+            <button id="loadVideosBtn">
+                <span data-i18n="home.selectVideos">📂 Selecionar vídeos</span>
+            </button>
+
+            <button id="clearVideosBtn">
+                <span class="windows-icon" aria-hidden="true">&#xE74D;</span>
+                <span data-i18n="home.clearAll">Clear All</span>
+            </button>
+
+        </section>
+
+        <!--==================================================
+                        CONTROLS
+        ==================================================-->
+
+        <section class="controls">
+
+            <div class="play-control">
+
+                <button id="playBtn">
+                    <span data-i18n="home.play">▶ Play</span>
+                </button>
+
+                <div
+                    id="playNotice"
+                    class="play-notice"
+                    role="status"
+                    aria-live="polite"
+                    hidden>
+
+                    <span data-i18n="home.playNotice">A posição do vídeo foi alterada. Clique em Play para continuar.</span>
+
+                </div>
+
+            </div>
+
+            <button id="pauseBtn">
+                <span data-i18n="home.pause">⏸ Pause</span>
+            </button>
+
+            <button id="restartBtn">
+                <span data-i18n="home.restart">⏹ Restart</span>
+            </button>
+
+
+            <button id="tempoButton">
+                <span class="windows-icon" aria-hidden="true">&#xE121;</span>
+                <span data-i18n="home.randomTime">Random Time</span>
+            </button>
+
+            <button id="shuffleVideosBtn" type="button">
+                <span class="windows-icon" aria-hidden="true">&#xE8B1;</span>
+                <span data-i18n="home.shuffleVideos">Embaralhar vídeos</span>
+            </button>
+
+
+            <div class="settings-selector">
+
+                <button id="settingsButton">
+                    <span class="windows-icon" aria-hidden="true">&#xE713;</span>
+                    <span data-i18n="home.settings">Settings</span>
+                </button>
+
+                <div
+                    id="settingsMenu"
+                    class="settings-menu">
+
+                    <label class="settings-option">
+
+                        <input
+                            type="checkbox"
+                            id="autoRestartVideos"
+                            checked>
+
+                        <span data-i18n="home.autoRestart">Restart videos when they end</span>
+
+                    </label>
+
+                    <label class="settings-option">
+
+                        <input
+                            type="checkbox"
+                            id="noVerticalCover">
+
+                        <span data-i18n="home.verticalRatio">Preserve vertical video aspect ratio</span>
+
+                    </label>
+
+                    <label class="settings-option">
+
+                        <input
+                            type="checkbox"
+                            id="verticalOnlyVideos">
+
+                        <span data-i18n="home.verticalOnly">Show all videos in vertical format</span>
+
+                    </label>
+
+                    <div class="settings-slider-group">
+
+                        <label for="gridScaleSlider" data-i18n="home.gridSize">
+                            Grid size
+                        </label>
+
+                        <input
+                            id="gridScaleSlider"
+                            type="range"
+                            min="0.8"
+                            max="1.6"
+                            step="0.05"
+                            value="1">
+
+                    </div>
+
+                    <div class="settings-slider-group">
+
+                        <label for="globalPlaybackRate" data-i18n="home.globalPlaybackRate">
+                            Velocidade global dos vídeos
+                        </label>
+
+                        <select id="globalPlaybackRate" class="settings-speed-select">
+                            <option value="0.25">0,25x</option>
+                            <option value="0.5">0,5x</option>
+                            <option value="0.75">0,75x</option>
+                            <option value="1" selected>1x</option>
+                            <option value="1.25">1,25x</option>
+                            <option value="1.5">1,5x</option>
+                            <option value="1.75">1,75x</option>
+                            <option value="2">2x</option>
+                        </select>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!--==================================================
+                    GLOBAL SLIDER
+        ==================================================-->
+
+        <section class="global-slider-area">
+
+            <span>
+                0%
+            </span>
+
+            <input
+                type="range"
+                id="globalSlider"
+                min="0"
+                max="100"
+                value="0"
+                step="0.01">
+
+            <span>
+                100%
+            </span>
+
+        </section>
+
+
+        <!--==================================================
+                    VIDEO AREA
+        ==================================================-->
+
+        <section
+            id="videoGrid"
+            class="video-grid">
+
+            <!--
+                Players are created automatically by JavaScript.
+            -->
+
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+
+        <span data-i18n="footer.tagline">Video Studio · Ferramentas para vídeo</span>
+        <a href="patch-notes.html" data-i18n="footer.notes">Notas de atualização</a>
+        <a href="como-usar.html" data-i18n="footer.guide">Como usar o site</a>
+
+    </footer>
+
+    <script src="language.js"></script>
+    <script src="teste-sincronizacao-v2.js"></script>
+    <script src="feedback.js"></script>
+
+</body>
+
+</html>

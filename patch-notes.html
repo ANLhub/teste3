@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title data-i18n="title.notes">Notas de atualização</title>
+
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <link
+        rel="stylesheet"
+        href="teste-sincronizacao-v2.css">
+
+</head>
+
+<body data-theme="dark">
+
+    <div
+        class="background-decorations"
+        aria-hidden="true">
+    </div>
+
+    <nav class="site-nav" aria-label="Navegação principal" data-i18n-aria-label="nav.label">
+
+        <div class="site-nav-links">
+            <a href="index.html" data-i18n="nav.home">Início</a>
+            <a href="funcionalidade.html" data-i18n="nav.creator">Criar GIF, clipe e print</a>
+            <a href="pagina-3.html" data-i18n="nav.page3">Loop de vídeo</a>
+            <a href="pagina-4.html" data-i18n="nav.page4">Página 4</a>
+            <a href="pagina-5.html" data-i18n="nav.page5">Página 5</a>
+        </div>
+
+        <div class="language-selector">
+            <button id="languageButton" class="language-button" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="languageMenu">
+                <span id="languageFlag" aria-hidden="true">🇧🇷</span>
+                <span id="languageName">Português</span>
+                <span class="language-chevron" aria-hidden="true">▾</span>
+            </button>
+            <div id="languageMenu" class="language-menu" hidden>
+                <button type="button" data-language="pt-BR"><span aria-hidden="true">🇧🇷</span><span data-i18n="language.portuguese">Português (Brasil)</span></button>
+                <button type="button" data-language="en"><span aria-hidden="true">🇺🇸</span><span data-i18n="language.english">English</span></button>
+            </div>
+        </div>
+
+        <a class="profile-nav-link" href="perfil.html" data-i18n-aria-label="nav.profile" data-i18n-title="nav.profile">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="8" r="4"></circle>
+                <path d="M4.5 21a7.5 7.5 0 0 1 15 0"></path>
+            </svg>
+        </a>
+
+        <div class="site-settings-selector">
+            <button id="siteSettingsButton" class="language-button site-settings-button" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="siteSettingsMenu" data-i18n-aria-label="siteSettings.button" data-i18n-title="siteSettings.button">
+                <span class="windows-icon" aria-hidden="true">&#xE713;</span>
+            </button>
+            <div id="siteSettingsMenu" class="site-settings-menu" hidden>
+                <label class="settings-option">
+                    <input type="checkbox" id="siteLightMode">
+                    <span data-i18n="siteSettings.lightMode">Light mode</span>
+                </label>
+            </div>
+        </div>
+
+    </nav>
+
+    <main class="container">
+
+        <header class="page-header">
+
+            <h1 data-i18n="notes.heading">Notas de atualização</h1>
+
+            <p data-i18n="notes.description">Resumo das melhorias e novidades adicionadas ao projeto.</p>
+
+        </header>
+
+        <section class="patch-notes">
+
+            <article class="patch-note">
+
+                <p class="patch-version">Version 0.28</p>
+                <time class="patch-date" datetime="2026-10-20">20/10/2026</time>
+                <h2>GIF color fidelity</h2>
+
+                <ul>
+                    <li>Replaced the fixed low-resolution color palette with one adaptive palette shared across the GIF's frames.</li>
+                    <li>Added color dithering to preserve gradients and reduce visible banding.</li>
+                </ul>
+
+            </article>
+
+            <article class="patch-note">
+
+                <p class="patch-version">Version 0.27</p>
+                <time class="patch-date" datetime="2026-10-20">20/10/2026</time>
+                <h2>Random player controls</h2>
+
+                <ul>
+                    <li>Removed selected video filenames from the page display.</li>
+                    <li>Added a volume slider below the player that remains consistent when videos switch.</li>
+                </ul>
+
+            </article>
+
+            <article class="patch-note">
+
+                <p class="patch-version">Version 0.26</p>
+                <time class="patch-date" datetime="2026-10-20">20/10/2026</time>
+                <h2>Language selector</h2>
+
+                <ul>
+                    <li>Fixed the desktop language menu being covered by page content, so language choices are clickable.</li>
+                    <li>Replaced the language abbreviation in the selector with the country's flag and the language name.</li>
+                </ul>
+
+            </article>
+
+            <article class="patch-note">
+
+                <p class="patch-version">Version 0.25</p>
+                <time class="patch-date" datetime="2026-10-20">20/10/2026</time>
+                <h2>Random video player</h2>
+
+                <ul>
+                    <li>Added a single-player video queue that randomly selects and plays one chosen video at a time.</li>
+                    <li>Added a configurable display duration, set to 30 seconds by default, and an option to start each video at a random position.</li>
+                </ul>
+
+            </article>
+
+            <article class="patch-note">
+
+                <p class="patch-version">Version 0.24</p>
+                <time class="patch-date" datetime="2026-10-20">20/10/2026</time>
+                <h2>Video Rhythm horizontal track</h2>
+
+                <ul>
+                    <li>Removed the visual game overlay from the video and kept the rhythm animation in the track below it.</li>
+                    <li>All enabled orb colors now travel toward one shared target on the left side of the track.</li>
+                </ul>
+
+            </article>
+
+            <article class="patch-note">
+
+                <p class="patch-version">Version 0.23</p>
+                <time class="patch-date" datetime="2026-10-20">20/10/2026</time>
+                <h2>Video Rhythm color track</h2>
+
+                <ul>
+                    <li>Added a horizontal rhythm track synchronized with video playback, with colored orbs moving toward matching targets.</li>
+                    <li>Added color selection in game settings, with pink enabled by default and at least one color always active.</li>
+                </ul>
+
+            </article>
+
+            <article class="patch-note">
+
+                <p class="patch-version">Version 0.22</p>
+                <time class="patch-date" datetime="2026-10-20">20/10/2026</time>
+                <h2>Video Rhythm instructions</h2>
+
+                <ul>
+                    <li>Added a How to Play popup next to the difficulty selector, with placeholder instructions and keyboard-friendly close behavior.</li>
+                </ul>
+
+            </article>
+
+            <article class="patch-note">
+
+                <p class="patch-version">Version 0.21</p>
+                <time class="patch-date" datetime="2026-10-20">20/10/2026</time>
+                <h2>Video Rhythm minigame</h2>
+
+                <ul>
+                    <li>Replaced the reserved fourth page with a video rhythm game that overlays randomized falling orbs and glowing targets on video playback.</li>
+                    <li>Added Easy, Normal, Hard, and Expert patterns with different speeds, gaps, and simultaneous notes.</li>
+                </ul>
+
+            </article>
+
+            <article class="patch-note">
+
+                <p class="patch-version">Version 0.20</p>
+                <time class="patch-date" datetime="2026-10-20">20/10/2026</time>
+                <h2>Working loop fade effects</h2>
+
+                <ul>
+                    <li>Connected the fade toggle and duration control to video opacity and audio volume at the selected loop boundaries.</li>
+                    <li>Applied the fade consistently during forward and backward playback.</li>
+                </ul>
+
+            </article>
+
+            <article class="patch-note">
+
+                <p class="patch-version">Version 0.19</p>
+                <time class="patch-date" datetime="2026-10-20">20/10/2026</time>
+                <h2>Loop reverse audio and visual improvements</h2>
+
+                <ul>
+                    <li>Added choices to mute audio, keep it playing forward, or play the captured audio backward during the visual reverse pass.</li>
+                    <li>Improved reverse-video sharpness and frame pacing, and aligned the reverse preview over the video.</li>
+                    <li>Audio modes support selected segments up to 120 seconds.</li>
+                </ul>
+
+            </article>
+
+            <article class="patch-note">
+
+                <p class="patch-version">Version 0.18</p>
+                <time class="patch-date" datetime="2026-10-20">20/10/2026</time>
+                <h2>MP4 compatibility remux</h2>
+
+                <ul>
+                    <li>Added local MP4 remuxing to produce a conventional file layout that improves timeline seeking and compatibility with desktop media players.</li>
+                    <li>Preserves supported audio and video codecs without re-encoding and reports when the original audio track cannot be retained.</li>
+                </ul>
+
+            </article>
+
+            <article class="patch-note">
+
+                <p class="patch-version">Version 0.17</p>
+                <time class="patch-date" datetime="2026-10-20">20/10/2026</time>
+                <h2>MP4 clip export</h2>
+
+                <ul>
+                    <li>Clip creation now requests MP4 recording and downloads only recordings confirmed as MP4.</li>
+                    <li>Browsers without MP4 MediaRecorder support show an explicit message instead of exporting a different format.</li>
+                </ul>
+
+            </article>
+
+            <article class="patch-note">
+
+                <p class="patch-version">Version 0.16</p>
+                <time class="patch-date" datetime="2026-10-20">20/10/2026</time>
+                <h2>Video clip export</h2>
+
+                <ul>
+                    <li>Enabled clip creation from the selected video segment, retaining its resolution and audio while recording in high quality.</li>
+                    <li>Removed the fixed duration limit for clips; recording runs in real time and uses available device memory.</li>
+                    <li>Kept the 30-second limit for GIFs while allowing the shared timeline selection to span longer clips.</li>
+                </ul>
+
+            </article>
+
+            <article class="patch-note">
+
+                <p class="patch-version">Version 0.15</p>
+                <time class="patch-date" datetime="2026-10-20">20/10/2026</time>
+                <h2>Working forward-and-backward loop</h2>
+
+                <ul>
+                    <li>Connected the forward-and-backward setting to loop playback using a bounded frame cache, with audio muted during reverse playback.</li>
+                    <li>Moved loop settings next to the video selection button.</li>
+                    <li>Fade controls remain available in settings but are not connected to playback yet.</li>
+                </ul>
+
+            </article>
+
+            <article class="patch-note">
+
+                <p class="patch-version">Version 0.14</p>
+                <time class="patch-date" datetime="2026-10-20">20/10/2026</time>
+                <h2>Loop effect settings</h2>
+
+                <ul>
+                    <li>Added a settings panel for forward-and-backward playback and video/audio fade options, including a fade duration control.</li>
+                    <li>Added the loop settings panel and fade duration controls.</li>
+                </ul>
+
+            </article>
+
+            <article class="patch-note">
+
+                <p class="patch-version">Version 0.13</p>
+                <time class="patch-date" datetime="2026-10-20">20/10/2026</time>
+                <h2>Video loop and home grid layout</h2>
+
+                <ul>
+                    <li>Added a video loop page with adjustable start and end markers for continuous playback of a selected segment.</li>
+                    <li>Centered the home video grid on wide screens and improved footer placement.</li>
+                </ul>
+
+            </article>
+
+            <article class="patch-note">
+
+                <p class="patch-version">Version 0.12</p>
+                <time class="patch-date" datetime="2026-10-20">20/10/2026</time>
+                <h2>GIF timeline zoom</h2>
+
+                <ul>
+                    <li>Replaced video scrubbing with timeline zoom, spreading the GIF selection handles for precise editing on long videos.</li>
+                    <li>The zoomed timeline can be scrolled horizontally, and the newest patch notes now appear first.</li>
+                </ul>
+
+            </article>
+
+            <article class="patch-note">
+
+                <p class="patch-version">Version 0.11</p>
+                <time class="patch-date" datetime="2026-10-20">20/10/2026</time>
+                <h2 data-i18n="notes.v011.title">Exportação de GIF</h2>
+
+                <ul>
+                    <li data-i18n="notes.v011.item1">Geração e download local de GIF usando o trecho selecionado.</li>
+                    <li data-i18n="notes.v011.item2">Limite do trecho aumentado para 30 segundos, a 10 quadros por segundo e largura máxima de 480 px.</li>
+                    <li data-i18n="notes.v011.item3">Os marcadores se ajustam para manter a seleção dentro do limite e mostram a prévia no vídeo conforme são movidos.</li>
+                </ul>
+
+            </article>
+
+            <article class="patch-note">
+
+                <p class="patch-version">Version 0.10</p>
+                <time class="patch-date" datetime="2026-10-20">20/10/2026</time>
+                <h2 data-i18n="notes.v010.title">Rodapé e notas de atualização</h2>
+
+                <ul>
+                    <li data-i18n="notes.v010.item1">Adição de um rodapé compartilhado com acesso às notas de atualização.</li>
+                    <li data-i18n="notes.v010.item2">Criação desta página para documentar as atualizações do projeto.</li>
+                </ul>
+
+            </article>
+
+            <article class="patch-note">
+
+                <p class="patch-version">Version 0.9</p>
+                <time class="patch-date" datetime="2026-10-20">20/10/2026</time>
+                <h2 data-i18n="notes.v09.title">Interface do criador de mídia</h2>
+
+                <ul>
+                    <li data-i18n="notes.v09.item1">Seleção de um vídeo do computador e pré-visualização na página.</li>
+                    <li data-i18n="notes.v09.item2">Barra de seleção do trecho com marcadores de início e fim.</li>
+                    <li data-i18n="notes.v09.item3">Captura do quadro atual do vídeo como imagem PNG.</li>
+                    <li data-i18n="notes.v09.item4">Nesta versão, os botões de GIF e clipe ainda eram apenas visuais; a exportação de GIF foi adicionada posteriormente, na versão 0.11.</li>
+                    <li data-i18n="notes.v09.item5">A exportação de clipe continua pendente.</li>
+                </ul>
+
+            </article>
+
+            <article class="patch-note">
+
+                <p class="patch-version">Version 0.8</p>
+                <time class="patch-date" datetime="2026-10-20">20/10/2026</time>
+                <h2 data-i18n="notes.v08.title">Navegação entre páginas</h2>
+
+                <ul>
+                    <li data-i18n="notes.v08.item1">Criação de uma navbar com cinco destinos, incluindo a página inicial e áreas para novas funcionalidades.</li>
+                    <li data-i18n="notes.v08.item2">Criação da segunda página, dedicada ao criador de GIF, clipe e print.</li>
+                </ul>
+
+            </article>
+
+            <article class="patch-note">
+
+                <p class="patch-version">Version 0.7</p>
+                <time class="patch-date" datetime="2026-10-20">20/10/2026</time>
+                <h2 data-i18n="notes.v07.title">Ícones dos controles</h2>
+
+                <ul>
+                    <li data-i18n="notes.v07.item1">Adição de ícones da interface do Windows aos botões Clear All, Random Time e Settings.</li>
+                </ul>
+
+            </article>
+
+            <article class="patch-note">
+
+                <p class="patch-version">Version 0.6</p>
+                <time class="patch-date" datetime="2026-10-20">20/10/2026</time>
+                <h2 data-i18n="notes.v06.title">Aviso de reprodução</h2>
+
+                <ul>
+                    <li data-i18n="notes.v06.item1">Ao mudar a posição de um vídeo pela barra individual ou global, um aviso lembra que é preciso clicar em Play para continuar.</li>
+                    <li data-i18n="notes.v06.item2">O aviso desaparece ao acionar Play.</li>
+                </ul>
+
+            </article>
+
+            <article class="patch-note">
+
+                <p class="patch-version">Version 0.5</p>
+                <time class="patch-date" datetime="2026-10-20">20/10/2026</time>
+                <h2 data-i18n="notes.v05.title">Fundo animado e grade automática</h2>
+
+                <ul>
+                    <li data-i18n="notes.v05.item1">Animação lenta na textura de fundo, respeitando a preferência do sistema por movimento reduzido.</li>
+                    <li data-i18n="notes.v05.item2">Remoção do botão Grid; a disposição dos vídeos passou a se ajustar automaticamente ao espaço disponível.</li>
+                </ul>
+
+            </article>
+
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+
+        <span data-i18n="footer.tagline">Video Studio · Ferramentas para vídeo</span>
+        <a href="patch-notes.html" aria-current="page" data-i18n="footer.notes">Notas de atualização</a>
+        <a href="como-usar.html" data-i18n="footer.guide">Como usar o site</a>
+
+    </footer>
+
+    <script src="language.js"></script>
+    <script src="feedback.js"></script>
+
+</body>
+
+</html>

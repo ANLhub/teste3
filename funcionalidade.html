@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title data-i18n="title.creator">Media Generator</title>
+
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <link
+        rel="stylesheet"
+        href="teste-sincronizacao-v2.css">
+
+</head>
+
+<body data-theme="dark">
+
+    <div
+        class="background-decorations"
+        aria-hidden="true">
+    </div>
+
+    <nav class="site-nav" aria-label="Navegação principal" data-i18n-aria-label="nav.label">
+
+        <div class="site-nav-links">
+
+            <a href="index.html" data-i18n="nav.home">Split View</a>
+            <a href="funcionalidade.html" aria-current="page" data-i18n="nav.creator">Media Generator</a>
+            <a href="pagina-3.html" data-i18n="nav.page3">Loop de vídeo</a>
+            <a href="pagina-4.html" data-i18n="nav.page4">Página 4</a>
+            <a href="pagina-5.html" data-i18n="nav.page5">Página 5</a>
+            <a href="modelos.html" data-i18n="nav.models">Modelos</a>
+
+        </div>
+
+        <div class="language-selector">
+
+            <button id="languageButton" class="language-button" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="languageMenu">
+                <span id="languageFlag" aria-hidden="true">🇧🇷</span>
+                <span id="languageName">Português</span>
+                <span class="language-chevron" aria-hidden="true">▾</span>
+            </button>
+
+            <div id="languageMenu" class="language-menu" hidden>
+                <button type="button" data-language="pt-BR"><span aria-hidden="true">🇧🇷</span><span data-i18n="language.portuguese">Português (Brasil)</span></button>
+                <button type="button" data-language="en"><span aria-hidden="true">🇺🇸</span><span data-i18n="language.english">English</span></button>
+            </div>
+
+        </div>
+
+        <a class="profile-nav-link" href="perfil.html" data-i18n-aria-label="nav.profile" data-i18n-title="nav.profile">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="8" r="4"></circle>
+                <path d="M4.5 21a7.5 7.5 0 0 1 15 0"></path>
+            </svg>
+        </a>
+
+        <div class="site-settings-selector">
+            <button id="siteSettingsButton" class="language-button site-settings-button" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="siteSettingsMenu" data-i18n-aria-label="siteSettings.button" data-i18n-title="siteSettings.button">
+                <span class="windows-icon" aria-hidden="true">&#xE713;</span>
+            </button>
+            <div id="siteSettingsMenu" class="site-settings-menu" hidden>
+                <label class="settings-option">
+                    <input type="checkbox" id="siteLightMode">
+                    <span data-i18n="siteSettings.lightMode">Light mode</span>
+                </label>
+            </div>
+        </div>
+
+    </nav>
+
+    <main class="container">
+
+        <header class="page-header">
+
+            <h1 data-i18n="creator.heading">Crie GIFs, clipes e imagens</h1>
+
+            <p data-i18n="creator.description">Escolha um vídeo, destaque seu momento favorito e prepare algo para compartilhar.</p>
+
+        </header>
+
+        <section class="creator-panel" aria-label="Editor de vídeo" data-i18n-aria-label="creator.editor">
+
+            <input
+                id="creatorVideoInput"
+                type="file"
+                accept="video/*"
+                hidden>
+
+            <button
+                id="chooseCreatorVideo"
+                class="creator-button creator-select"
+                type="button">
+
+                <span class="windows-icon" aria-hidden="true">&#xE714;</span>
+                <span data-i18n="creator.chooseVideo">Escolher vídeo</span>
+
+            </button>
+
+            <p id="creatorFileName" class="creator-file-name">
+                <span data-i18n="creator.noVideo">Nenhum vídeo selecionado</span>
+            </p>
+
+            <div class="creator-preview">
+
+                <video
+                    id="creatorVideo"
+                    controls
+                    playsinline
+                    preload="metadata"
+                    aria-label="Prévia do vídeo"
+                    data-i18n-aria-label="creator.preview">
+                </video>
+
+                <div id="creatorEmptyState" class="creator-empty-state">
+                    <span class="creator-empty-icon" aria-hidden="true">&#xE8B2;</span>
+                    <p data-i18n="creator.emptyPreview">Seu vídeo aparecerá aqui</p>
+                </div>
+
+                <div id="exportProgressOverlay" class="gif-progress-overlay" hidden>
+                    <div class="gif-progress-content">
+                        <strong id="exportProgressTitle" data-i18n="creator.exportProgressTitle">Preparando seu GIF</strong>
+                        <progress
+                            id="exportProgressBar"
+                            max="100"
+                            value="0"
+                            aria-label="Progresso da criação"
+                            data-i18n-aria-label="creator.exportProgress">
+                        </progress>
+                        <span id="exportProgressLabel" aria-live="polite" data-i18n="creator.exportProgressStarting">Preparando... 0%</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <section class="trim-editor" aria-label="Seleção do trecho do vídeo" data-i18n-aria-label="creator.trimSection">
+
+                <div class="trim-heading">
+
+                    <h2 data-i18n="creator.trimHeading">Escolha seu momento</h2>
+
+                    <span data-i18n="creator.trimInstructions">Arraste as pontas para marcar onde começa e termina.</span>
+
+                </div>
+
+                <div id="trimViewport" class="trim-viewport">
+
+                    <div class="trim-timeline">
+
+                        <div id="trimFilmstrip" class="trim-filmstrip" aria-hidden="true"></div>
+                        <div class="trim-track"></div>
+                        <div id="trimSelection" class="trim-selection"></div>
+                        <div id="trimPlayhead" class="trim-playhead" aria-hidden="true" hidden>
+                            <span></span>
+                        </div>
+
+                        <input
+                            id="trimStart"
+                            class="trim-handle trim-start"
+                            type="range"
+                            min="0"
+                            max="10000"
+                            value="0"
+                            disabled
+                            aria-label="Início do trecho"
+                            data-i18n-aria-label="creator.trimStart">
+
+                        <input
+                            id="trimEnd"
+                            class="trim-handle trim-end"
+                            type="range"
+                            min="0"
+                            max="10000"
+                            value="10000"
+                            disabled
+                            aria-label="Fim do trecho"
+                            data-i18n-aria-label="creator.trimEnd">
+
+                    </div>
+
+                </div>
+
+                <div class="trim-times">
+
+                    <span><span data-i18n="creator.start">Início:</span> <strong id="trimStartTime">00:00</strong></span>
+                    <span><span data-i18n="creator.end">Fim:</span> <strong id="trimEndTime">00:00</strong></span>
+
+                </div>
+
+            </section>
+
+            <section class="timeline-zoom-editor" aria-label="Ajuste do trecho" data-i18n-aria-label="creator.timelineZoomSection">
+
+                <div class="timeline-zoom-heading">
+                    <label for="timelineZoom" data-i18n="creator.timelineZoom">Aproxime a linha do tempo para escolher melhor</label>
+                    <output id="timelineZoomValue" for="timelineZoom">1x</output>
+                </div>
+
+                <input
+                    id="timelineZoom"
+                    class="timeline-zoom-slider"
+                    type="range"
+                    min="1"
+                    max="100"
+                    value="1"
+                    step="1"
+                    disabled
+                    aria-label="Aproximar a linha do tempo"
+                    data-i18n-aria-label="creator.timelineZoom">
+
+                <button
+                    id="toggleTimelineFrameSettings"
+                    class="timeline-frame-settings-toggle"
+                    type="button"
+                    aria-expanded="false"
+                    aria-controls="timelineFrameSettings"
+                    data-i18n="creator.timelineFrameSettings">
+                    Ajustar miniaturas
+                </button>
+
+                <div id="timelineFrameSettings" class="timeline-frame-settings" hidden>
+                    <label for="timelineFrameSkip" data-i18n="creator.timelineFrameSkip">
+                        Espaçamento das miniaturas
+                    </label>
+                    <div class="timeline-frame-skip-control">
+                        <input
+                            id="timelineFrameSkip"
+                            type="range"
+                            min="1"
+                            max="120"
+                            value="10"
+                            step="1"
+                            aria-describedby="timelineFrameSkipValue">
+                        <output id="timelineFrameSkipValue" for="timelineFrameSkip">10</output>
+                    </div>
+                </div>
+
+            </section>
+
+            <div class="creator-actions">
+
+                <div class="gif-action-group">
+                    <button
+                        id="cancelGifSelection"
+                        class="creator-button creator-cancel-selection"
+                        type="button"
+                        data-i18n="creator.cancelGifSelection"
+                        hidden>
+                        Cancelar seleção
+                    </button>
+
+                    <button
+                        id="createGif"
+                        class="creator-button"
+                        type="button"
+                        disabled
+                        title="Ajustar seleção para o limite máximo de GIF"
+                        data-i18n-title="creator.prepareGifTitle">
+
+                        <span aria-hidden="true">&#xE8A5;</span>
+                        <span data-i18n="creator.prepareGif">Preparar GIF</span>
+
+                    </button>
+
+                    <button
+                        id="previewGif"
+                        class="creator-button creator-preview-button"
+                        type="button"
+                        hidden
+                        data-i18n="creator.previewGif">
+                        Prévia GIF
+                    </button>
+                </div>
+
+                <div class="clip-action-group">
+                <button
+                    class="creator-button"
+                    type="button"
+                    disabled
+                    id="createClip"
+                    data-i18n-title="creator.clipTitle">
+
+                    <span aria-hidden="true">&#xE8B2;</span>
+                    <span data-i18n="creator.createClip">Criar clipe</span>
+
+                </button>
+
+                <button
+                    id="previewClip"
+                    class="creator-button creator-preview-button"
+                    type="button"
+                    disabled
+                    data-i18n="creator.previewClip">
+                    Prévia do clipe
+                </button>
+                </div>
+
+                <button
+                    id="captureFrame"
+                    class="creator-button"
+                    type="button"
+                    disabled>
+
+                    <span aria-hidden="true">&#xE8A7;</span>
+                    <span data-i18n="creator.takeScreenshot">Salvar imagem</span>
+
+                </button>
+
+            </div>
+
+            <p class="creator-export-note">
+                <span data-i18n="creator.exportNote">GIF: up to 30 seconds, 10 frames per second, and a maximum width of 480 px. Clips keep the original resolution and audio, are re-encoded at high quality, and have no fixed duration limit; device memory applies.</span>
+            </p>
+
+            <p
+                id="creatorStatus"
+                class="creator-status"
+                role="status"
+                aria-live="polite">
+            </p>
+
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+
+        <span data-i18n="footer.tagline">Video Studio · Ferramentas para vídeo</span>
+        <a href="patch-notes.html" data-i18n="footer.notes">Notas de atualização</a>
+        <a href="como-usar.html" data-i18n="footer.guide">Como usar o site</a>
+
+    </footer>
+
+    <script src="language.js"></script>
+    <script src="gif-encoder.js"></script>
+    <script src="vendor/mediabunny.min.js"></script>
+    <script src="criador-midia.js"></script>
+    <script src="feedback.js"></script>
+
+</body>
+
+</html>

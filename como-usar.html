@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title data-i18n="title.guide">Como usar o site</title>
+
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <link
+        rel="stylesheet"
+        href="teste-sincronizacao-v2.css">
+
+</head>
+
+<body data-theme="dark">
+
+    <div
+        class="background-decorations"
+        aria-hidden="true">
+    </div>
+
+    <nav class="site-nav" aria-label="Navegação principal" data-i18n-aria-label="nav.label">
+
+        <div class="site-nav-links">
+            <a href="index.html" data-i18n="nav.home">Início</a>
+            <a href="funcionalidade.html" data-i18n="nav.creator">Criar GIF, clipe e print</a>
+            <a href="pagina-3.html" data-i18n="nav.page3">Loop de vídeo</a>
+            <a href="pagina-4.html" data-i18n="nav.page4">Video Rhythm</a>
+            <a href="pagina-5.html" data-i18n="nav.page5">Player aleatório</a>
+        </div>
+
+        <div class="language-selector">
+            <button id="languageButton" class="language-button" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="languageMenu">
+                <span id="languageFlag" aria-hidden="true">🇧🇷</span>
+                <span id="languageName">Português</span>
+                <span class="language-chevron" aria-hidden="true">▾</span>
+            </button>
+            <div id="languageMenu" class="language-menu" hidden>
+                <button type="button" data-language="pt-BR"><span aria-hidden="true">🇧🇷</span><span data-i18n="language.portuguese">Português (Brasil)</span></button>
+                <button type="button" data-language="en"><span aria-hidden="true">🇺🇸</span><span data-i18n="language.english">English</span></button>
+            </div>
+        </div>
+
+        <a class="profile-nav-link" href="perfil.html" data-i18n-aria-label="nav.profile" data-i18n-title="nav.profile">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="8" r="4"></circle>
+                <path d="M4.5 21a7.5 7.5 0 0 1 15 0"></path>
+            </svg>
+        </a>
+
+        <div class="site-settings-selector">
+            <button id="siteSettingsButton" class="language-button site-settings-button" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="siteSettingsMenu" data-i18n-aria-label="siteSettings.button" data-i18n-title="siteSettings.button">
+                <span class="windows-icon" aria-hidden="true">&#xE713;</span>
+            </button>
+            <div id="siteSettingsMenu" class="site-settings-menu" hidden>
+                <label class="settings-option">
+                    <input type="checkbox" id="siteLightMode">
+                    <span data-i18n="siteSettings.lightMode">Light mode</span>
+                </label>
+            </div>
+        </div>
+
+    </nav>
+
+    <main class="container">
+
+        <header class="page-header">
+
+            <h1 data-i18n="guide.heading">Como usar o site</h1>
+
+            <p data-i18n="guide.description">Veja o que cada página oferece e como começar a usar suas ferramentas.</p>
+
+        </header>
+
+        <section class="patch-notes" aria-label="Guia de uso">
+
+            <article class="patch-note">
+                <p class="patch-version" data-i18n="guide.page1.label">Página 1</p>
+                <h2 data-i18n="guide.page1.title">Sincronização de vídeos</h2>
+                <ul>
+                    <li data-i18n="guide.page1.item1">Selecione dois ou mais vídeos para assisti-los lado a lado.</li>
+                    <li data-i18n="guide.page1.item2">Use a barra global para posicionar todos os vídeos na mesma porcentagem da duração; cada vídeo também tem sua própria barra.</li>
+                    <li data-i18n="guide.page1.item3">Use Reproduzir, Pausar, Reiniciar e Tempo aleatório para controlar a reprodução. Em Configurações, ajuste a grade, a proporção dos vídeos, o tema e a reinicialização automática.</li>
+                </ul>
+            </article>
+
+            <article class="patch-note">
+                <p class="patch-version" data-i18n="guide.page2.label">Página 2</p>
+                <h2 data-i18n="guide.page2.title">Criar GIF, clipe e print</h2>
+                <ul>
+                    <li data-i18n="guide.page2.item1">Escolha um vídeo e arraste os marcadores na linha do tempo para selecionar o trecho desejado.</li>
+                    <li data-i18n="guide.page2.item2">Use o zoom da linha do tempo para ajustar a seleção com mais precisão.</li>
+                    <li data-i18n="guide.page2.item3">Gere um GIF ou clipe a partir do trecho selecionado, ou salve como PNG a captura do quadro atual do vídeo.</li>
+                </ul>
+            </article>
+
+            <article class="patch-note">
+                <p class="patch-version" data-i18n="guide.page3.label">Página 3</p>
+                <h2 data-i18n="guide.page3.title">Loop de vídeo</h2>
+                <ul>
+                    <li data-i18n="guide.page3.item1">Escolha um vídeo e marque o início e o fim do trecho que deseja repetir.</li>
+                    <li data-i18n="guide.page3.item2">Use Reproduzir loop, Pausar e Parar para controlar a repetição.</li>
+                    <li data-i18n="guide.page3.item3">Nas configurações, ative a reprodução de ida e volta e ajuste as opções de áudio e transição gradual.</li>
+                </ul>
+            </article>
+
+            <article class="patch-note">
+                <p class="patch-version" data-i18n="guide.page4.label">Página 4</p>
+                <h2 data-i18n="guide.page4.title">Video Rhythm</h2>
+                <ul>
+                    <li data-i18n="guide.page4.item1">Escolha um vídeo e pressione Reproduzir no player; batidas coloridas percorrem a trilha no ritmo do vídeo.</li>
+                    <li data-i18n="guide.page4.item2">Abra as configurações para escolher a dificuldade e quais cores de batida aparecem.</li>
+                    <li data-i18n="guide.page4.item3">Ajuste o vídeo ou as opções quando quiser; a trilha é gerada com base na duração do vídeo.</li>
+                </ul>
+            </article>
+
+            <article class="patch-note">
+                <p class="patch-version" data-i18n="guide.page5.label">Página 5</p>
+                <h2 data-i18n="guide.page5.title">Player aleatório</h2>
+                <ul>
+                    <li data-i18n="guide.page5.item1">Selecione um ou mais vídeos para reproduzi-los em ordem aleatória, um de cada vez.</li>
+                    <li data-i18n="guide.page5.item2">Nas configurações, defina por quantos segundos cada vídeo fica em reprodução e se ele começa em um ponto aleatório.</li>
+                    <li data-i18n="guide.page5.item3">Use os controles do player e o controle de volume para pausar, retomar e ajustar o som.</li>
+                </ul>
+            </article>
+
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+
+        <span data-i18n="footer.tagline">Video Studio · Ferramentas para vídeo</span>
+        <a href="patch-notes.html" data-i18n="footer.notes">Notas de atualização</a>
+        <a href="como-usar.html" aria-current="page" data-i18n="footer.guide">Como usar o site</a>
+
+    </footer>
+
+    <script src="language.js"></script>
+    <script src="feedback.js"></script>
+
+</body>
+
+</html>

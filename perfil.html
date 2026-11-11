@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="accountProfile.title">Meu perfil | Video Studio</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="teste-sincronizacao-v2.css">
+</head>
+
+<body data-theme="dark">
+    <div class="background-decorations" aria-hidden="true"></div>
+
+    <dialog
+        id="developmentNotice"
+        class="model-dialog development-notice"
+        aria-labelledby="developmentNoticeTitle"
+        aria-describedby="developmentNoticeMessage">
+        <div class="development-notice-content">
+            <span class="development-notice-icon" aria-hidden="true">!</span>
+            <p class="development-notice-eyebrow" data-i18n="developmentNotice.eyebrow">Aviso de desenvolvimento</p>
+            <h2 id="developmentNoticeTitle" data-i18n="developmentNotice.title">Esta página ainda está em desenvolvimento</h2>
+            <p id="developmentNoticeMessage" data-i18n="developmentNotice.message">Algumas funcionalidades podem apresentar instabilidade ou não funcionar como esperado. Estamos trabalhando para melhorar a experiência.</p>
+            <button id="closeDevelopmentNotice" class="creator-button development-notice-close" type="button" autofocus data-i18n="developmentNotice.close">Entendi</button>
+        </div>
+    </dialog>
+
+    <nav class="site-nav" aria-label="Navegação principal" data-i18n-aria-label="nav.label">
+        <div class="site-nav-links">
+            <a href="index.html" data-i18n="nav.home">Início</a>
+            <a href="funcionalidade.html" data-i18n="nav.creator">Criar GIF, clipe e print</a>
+            <a href="pagina-3.html" data-i18n="nav.page3">Loop de vídeo</a>
+            <a href="pagina-4.html" data-i18n="nav.page4">Video Rhythm</a>
+            <a href="pagina-5.html" data-i18n="nav.page5">Player aleatório</a>
+            <a href="modelos.html" data-i18n="nav.models">Modelos</a>
+        </div>
+
+        <div class="language-selector">
+            <button id="languageButton" class="language-button" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="languageMenu">
+                <span id="languageFlag" aria-hidden="true">🇧🇷</span>
+                <span id="languageName">Português</span>
+                <span class="language-chevron" aria-hidden="true">▾</span>
+            </button>
+            <div id="languageMenu" class="language-menu" hidden>
+                <button type="button" data-language="pt-BR"><span aria-hidden="true">🇧🇷</span><span data-i18n="language.portuguese">Português (Brasil)</span></button>
+                <button type="button" data-language="en"><span aria-hidden="true">🇺🇸</span><span data-i18n="language.english">English</span></button>
+            </div>
+        </div>
+
+        <a
+            class="profile-nav-link"
+            href="perfil.html"
+            aria-current="page"
+            data-i18n-aria-label="nav.profile"
+            data-i18n-title="nav.profile">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="8" r="4"></circle>
+                <path d="M4.5 21a7.5 7.5 0 0 1 15 0"></path>
+            </svg>
+        </a>
+
+        <div class="site-settings-selector">
+            <button id="siteSettingsButton" class="language-button site-settings-button" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="siteSettingsMenu" data-i18n-aria-label="siteSettings.button" data-i18n-title="siteSettings.button">
+                <span class="windows-icon" aria-hidden="true">&#xE713;</span>
+            </button>
+            <div id="siteSettingsMenu" class="site-settings-menu" hidden>
+                <label class="settings-option">
+                    <input type="checkbox" id="siteLightMode">
+                    <span data-i18n="siteSettings.lightMode">Tema claro</span>
+                </label>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container account-profile-page">
+        <header class="account-profile-heading">
+            <p class="account-profile-eyebrow" data-i18n="accountProfile.eyebrow">ESPAÇO PESSOAL</p>
+            <h1 data-i18n="accountProfile.heading">Seu espaço criativo</h1>
+            <p data-i18n="accountProfile.description">Um lugar para organizar seus vídeos, clipes, GIFs e outras criações.</p>
+        </header>
+
+        <section class="account-profile-card" aria-label="Perfil demonstrativo" data-i18n-aria-label="accountProfile.summary">
+            <div class="account-profile-avatar" aria-hidden="true">
+                <svg viewBox="0 0 48 48">
+                    <circle cx="24" cy="17" r="9"></circle>
+                    <path d="M8 43a16 16 0 0 1 32 0"></path>
+                </svg>
+            </div>
+
+            <div class="account-profile-identity">
+                <span class="account-profile-preview" data-i18n="accountProfile.preview">Prévia visual · conteúdo demonstrativo</span>
+                <h2 data-i18n="accountProfile.name">Seu nome</h2>
+                <p data-i18n="accountProfile.member">Perfil de demonstração</p>
+            </div>
+
+            <div class="account-profile-stats" aria-label="Resumo demonstrativo">
+                <div>
+                    <strong>08</strong>
+                    <span data-i18n="accountProfile.projectsCount">projetos</span>
+                </div>
+                <div>
+                    <strong>03</strong>
+                    <span data-i18n="accountProfile.clipsCount">clipes</span>
+                </div>
+                <div>
+                    <strong>05</strong>
+                    <span data-i18n="accountProfile.gifsCount">GIFs</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="account-creations" aria-labelledby="accountCreationsHeading">
+            <header class="account-creations-heading">
+                <div>
+                    <h2 id="accountCreationsHeading" data-i18n="accountProfile.creationsHeading">Suas criações</h2>
+                    <p data-i18n="accountProfile.creationsCount">8 itens demonstrativos</p>
+                </div>
+                <div class="account-creation-filters" aria-hidden="true">
+                    <span class="is-selected" data-i18n="accountProfile.filterAll">Tudo</span>
+                    <span data-i18n="accountProfile.filterClips">Clipes</span>
+                    <span data-i18n="accountProfile.filterGifs">GIFs</span>
+                    <span data-i18n="accountProfile.filterImages">Capturas</span>
+                </div>
+            </header>
+
+            <div class="account-project-grid">
+                <article class="account-project-card">
+                    <div class="account-project-poster poster-sunset" aria-hidden="true">
+                        <span class="account-project-kind" data-i18n="accountProfile.kindClip">CLIPE</span>
+                        <span class="account-project-play">▶</span>
+                        <span class="account-project-duration" data-i18n="accountProfile.duration1">00:18</span>
+                    </div>
+                    <div class="account-project-details">
+                        <h3 data-i18n="accountProfile.project1">Fim de tarde</h3>
+                        <p data-i18n="accountProfile.date1">Editado há 2 dias</p>
+                    </div>
+                </article>
+
+                <article class="account-project-card">
+                    <div class="account-project-poster poster-moments" aria-hidden="true">
+                        <span class="account-project-kind" data-i18n="accountProfile.kindGif">GIF</span>
+                        <span class="account-project-gif">GIF</span>
+                        <span class="account-project-duration" data-i18n="accountProfile.duration2">00:06</span>
+                    </div>
+                    <div class="account-project-details">
+                        <h3 data-i18n="accountProfile.project2">Pequenos momentos</h3>
+                        <p data-i18n="accountProfile.date2">Editado há 5 dias</p>
+                    </div>
+                </article>
+
+                <article class="account-project-card">
+                    <div class="account-project-poster poster-city" aria-hidden="true">
+                        <span class="account-project-kind" data-i18n="accountProfile.kindClip">CLIPE</span>
+                        <span class="account-project-play">▶</span>
+                        <span class="account-project-duration" data-i18n="accountProfile.duration3">00:24</span>
+                    </div>
+                    <div class="account-project-details">
+                        <h3 data-i18n="accountProfile.project3">Luzes da cidade</h3>
+                        <p data-i18n="accountProfile.date3">Editado há 1 semana</p>
+                    </div>
+                </article>
+
+                <article class="account-project-card">
+                    <div class="account-project-poster poster-frame" aria-hidden="true">
+                        <span class="account-project-kind" data-i18n="accountProfile.kindImage">CAPTURA</span>
+                        <span class="account-project-photo-icon">▧</span>
+                    </div>
+                    <div class="account-project-details">
+                        <h3 data-i18n="accountProfile.project4">Quadro favorito</h3>
+                        <p data-i18n="accountProfile.date4">Editado há 2 semanas</p>
+                    </div>
+                </article>
+
+                <article class="account-project-card">
+                    <div class="account-project-poster poster-neon" aria-hidden="true">
+                        <span class="account-project-kind" data-i18n="accountProfile.kindGif">GIF</span>
+                        <span class="account-project-gif">GIF</span>
+                        <span class="account-project-duration" data-i18n="accountProfile.duration4">00:09</span>
+                    </div>
+                    <div class="account-project-details">
+                        <h3 data-i18n="accountProfile.project5">Reflexos neon</h3>
+                        <p data-i18n="accountProfile.date5">Editado há 3 semanas</p>
+                    </div>
+                </article>
+
+                <article class="account-project-card">
+                    <div class="account-project-poster poster-coast" aria-hidden="true">
+                        <span class="account-project-kind" data-i18n="accountProfile.kindClip">CLIPE</span>
+                        <span class="account-project-play">▶</span>
+                        <span class="account-project-duration" data-i18n="accountProfile.duration5">00:32</span>
+                    </div>
+                    <div class="account-project-details">
+                        <h3 data-i18n="accountProfile.project6">Caminho da praia</h3>
+                        <p data-i18n="accountProfile.date6">Editado há 1 mês</p>
+                    </div>
+                </article>
+
+                <article class="account-project-card">
+                    <div class="account-project-poster poster-flower" aria-hidden="true">
+                        <span class="account-project-kind" data-i18n="accountProfile.kindImage">CAPTURA</span>
+                        <span class="account-project-photo-icon">▧</span>
+                    </div>
+                    <div class="account-project-details">
+                        <h3 data-i18n="accountProfile.project7">Detalhe em foco</h3>
+                        <p data-i18n="accountProfile.date7">Editado há 1 mês</p>
+                    </div>
+                </article>
+
+                <article class="account-project-card">
+                    <div class="account-project-poster poster-night" aria-hidden="true">
+                        <span class="account-project-kind" data-i18n="accountProfile.kindGif">GIF</span>
+                        <span class="account-project-gif">GIF</span>
+                        <span class="account-project-duration" data-i18n="accountProfile.duration6">00:04</span>
+                    </div>
+                    <div class="account-project-details">
+                        <h3 data-i18n="accountProfile.project8">Noite em movimento</h3>
+                        <p data-i18n="accountProfile.date8">Editado há 2 meses</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <p class="account-profile-note" data-i18n="accountProfile.note">
+            Esta é apenas uma prévia visual. Nenhum projeto ou arquivo é salvo nesta página.
+        </p>
+    </main>
+
+    <footer class="site-footer">
+        <span data-i18n="footer.tagline">Video Studio · Ferramentas para vídeo</span>
+        <a href="patch-notes.html" data-i18n="footer.notes">Notas de atualização</a>
+        <a href="como-usar.html" data-i18n="footer.guide">Como usar o site</a>
+    </footer>
+
+    <script src="language.js"></script>
+    <script src="development-notice.js"></script>
+</body>
+
+</html>

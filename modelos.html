@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title data-i18n="title.models">Modelos</title>
+
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <link
+        rel="stylesheet"
+        href="teste-sincronizacao-v2.css">
+
+</head>
+
+<body data-theme="dark">
+
+    <div
+        class="background-decorations"
+        aria-hidden="true">
+    </div>
+
+    <nav class="site-nav" aria-label="Navegação principal" data-i18n-aria-label="nav.label">
+
+        <div class="site-nav-links">
+            <a href="index.html" data-i18n="nav.home">Início</a>
+            <a href="funcionalidade.html" data-i18n="nav.creator">Criar GIF, clipe e print</a>
+            <a href="pagina-3.html" data-i18n="nav.page3">Loop de vídeo</a>
+            <a href="pagina-4.html" data-i18n="nav.page4">Video Rhythm</a>
+            <a href="pagina-5.html" data-i18n="nav.page5">Player aleatório</a>
+            <a href="modelos.html" aria-current="page" data-i18n="nav.models">Modelos</a>
+        </div>
+
+        <div class="language-selector">
+            <button id="languageButton" class="language-button" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="languageMenu">
+                <span id="languageFlag" aria-hidden="true">🇧🇷</span>
+                <span id="languageName">Português</span>
+                <span class="language-chevron" aria-hidden="true">▾</span>
+            </button>
+            <div id="languageMenu" class="language-menu" hidden>
+                <button type="button" data-language="pt-BR"><span aria-hidden="true">🇧🇷</span><span data-i18n="language.portuguese">Português (Brasil)</span></button>
+                <button type="button" data-language="en"><span aria-hidden="true">🇺🇸</span><span data-i18n="language.english">English</span></button>
+            </div>
+        </div>
+
+        <a class="profile-nav-link" href="perfil.html" data-i18n-aria-label="nav.profile" data-i18n-title="nav.profile">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="8" r="4"></circle>
+                <path d="M4.5 21a7.5 7.5 0 0 1 15 0"></path>
+            </svg>
+        </a>
+
+        <div class="site-settings-selector">
+            <button id="siteSettingsButton" class="language-button site-settings-button" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="siteSettingsMenu" data-i18n-aria-label="siteSettings.button" data-i18n-title="siteSettings.button">
+                <span class="windows-icon" aria-hidden="true">&#xE713;</span>
+            </button>
+            <div id="siteSettingsMenu" class="site-settings-menu" hidden>
+                <label class="settings-option">
+                    <input type="checkbox" id="siteLightMode">
+                    <span data-i18n="siteSettings.lightMode">Light mode</span>
+                </label>
+            </div>
+        </div>
+
+    </nav>
+
+    <main class="container">
+
+        <header class="page-header">
+            <h1 data-i18n="models.heading">Minha coleção de modelos</h1>
+            <p data-i18n="models.description">Reúna suas modelos favoritas, organize por categorias e encontre tudo facilmente com tags.</p>
+        </header>
+
+        <div class="models-toolbar">
+            <label class="models-tag-search" for="modelTagSearch">
+                <span data-i18n="models.searchModels">Pesquisar modelos ou #tags</span>
+                <input id="modelTagSearch" type="search" autocomplete="off" data-i18n-aria-label="models.searchModels" placeholder="Nome ou #tag">
+            </label>
+            <div class="models-transfer-actions">
+                <input id="importModelsInput" type="file" accept=".json,application/json" hidden>
+                <input id="importTestModelsInput" type="file" accept=".json,application/json" hidden>
+                <button id="exportModelsButton" class="models-test-button" type="button" data-i18n="models.exportCards">Exportar cards</button>
+                <button id="importModelsButton" class="models-test-button" type="button" data-i18n="models.importCards">Importar cards</button>
+                <button id="importTestModelsButton" class="models-test-button" type="button" data-i18n="models.importTest">Importar teste</button>
+                <button
+                    id="clearModelDataBtn"
+                    class="models-test-button models-test-delete clear-model-data-button"
+                    type="button"
+                    data-i18n-title="models.clearLocalDataTitle">
+                    <span data-i18n="models.clearLocalData">Apagar modelos locais</span>
+                </button>
+            </div>
+            <div class="models-toolbar-actions">
+                <div class="models-page-settings models-collections">
+                    <button
+                        id="modelsCollectionsButton"
+                        class="models-test-button models-page-settings-button"
+                        type="button"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        aria-controls="modelsCollectionsMenu"
+                        data-i18n-title="models.collections"
+                        data-i18n-aria-label="models.collections">
+                        <span aria-hidden="true">▤</span>
+                        <span data-i18n="models.collections">Coleções</span>
+                    </button>
+                    <div id="modelsCollectionsMenu" class="models-page-settings-menu models-collections-menu" hidden>
+                        <button type="button" class="models-collection-option" data-model-collection="1" aria-pressed="true" data-i18n="models.collection1">Coleção 1</button>
+                        <button type="button" class="models-collection-option" data-model-collection="2" aria-pressed="false" data-i18n="models.collection2">Coleção 2</button>
+                        <button type="button" class="models-collection-option" data-model-collection="3" aria-pressed="false" data-i18n="models.collection3">Coleção 3</button>
+                    </div>
+                </div>
+                <div class="models-page-settings">
+                    <button
+                        id="modelsPageSettingsButton"
+                        class="models-test-button models-page-settings-button"
+                        type="button"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        aria-controls="modelsPageSettingsMenu"
+                        data-i18n-title="models.settings"
+                        data-i18n-aria-label="models.settings">
+                        <span aria-hidden="true">⚙</span>
+                        <span data-i18n="models.settings">Configurações</span>
+                    </button>
+                    <div id="modelsPageSettingsMenu" class="models-page-settings-menu" hidden>
+                        <label class="settings-option" for="modelGifsAlwaysActive">
+                            <input id="modelGifsAlwaysActive" type="checkbox" checked>
+                            <span data-i18n="models.gifsAlwaysActive">GIFs dos cards sempre ativos</span>
+                        </label>
+                    </div>
+                </div>
+                <button id="openModelForm" class="creator-button" type="button" data-i18n="models.createButton">+ Adicionar modelo</button>
+            </div>
+        </div>
+        <p id="modelsTransferStatus" class="models-test-status" role="status" aria-live="polite" hidden></p>
+        <p id="clearModelDataStatus" class="models-test-status" role="status" aria-live="polite" hidden></p>
+
+        <dialog id="modelFormDialog" class="model-dialog" aria-labelledby="modelFormHeading">
+            <form id="modelForm" class="model-form">
+                <div class="model-form-heading">
+                    <h2 id="modelFormHeading" data-i18n="models.formHeading">Criar modelo</h2>
+                    <button id="closeModelForm" class="model-dialog-close" type="button" aria-label="Fechar" data-i18n-aria-label="models.close">×</button>
+                </div>
+
+                <label for="modelName" data-i18n="models.nameLabel">Nome</label>
+                <input id="modelName" name="name" type="text" maxlength="100" autocomplete="off" required>
+
+                <label for="modelAlternateNames" data-i18n="models.alternateNames">Outros nomes</label>
+                <textarea id="modelAlternateNames" name="alternateNames" rows="2" maxlength="500"></textarea>
+                <small class="model-photo-help" data-i18n="models.alternateNamesHelp">Separe os nomes por vírgula ou linha.</small>
+
+                <label for="modelDescription" data-i18n="models.descriptionLabel">Descrição</label>
+                <textarea id="modelDescription" name="description" rows="3" maxlength="500"></textarea>
+
+                <label for="modelTags" data-i18n="models.tagsLabel">Tags</label>
+                <textarea id="modelTags" name="tags" rows="2" maxlength="500" placeholder="#tag1 #tag2"></textarea>
+                <small class="model-photo-help" data-i18n="models.tagsHelp">Separe as tags por espaço ou vírgula. Elas não aparecem no card.</small>
+                <div class="model-tag-presets">
+                    <button
+                        id="toggleModelTagPresets"
+                        class="model-form-cancel model-tag-presets-toggle"
+                        type="button"
+                        aria-expanded="false"
+                        aria-controls="modelTagPresets"
+                        data-i18n="models.tagPresets">
+                        Tags prontas
+                    </button>
+                    <div id="modelTagPresets" class="model-tag-presets-list" hidden>
+                        <button type="button" class="model-tag-preset" data-model-tag="ATM" aria-pressed="false">ATM</button>
+                        <button type="button" class="model-tag-preset" data-model-tag="BR" aria-pressed="false">BR</button>
+                        <button type="button" class="model-tag-preset" data-model-tag="ANAL" aria-pressed="false">ANAL</button>
+                        <button type="button" class="model-tag-preset" data-model-tag="GAPE" aria-pressed="false">GAPE</button>
+                        <button type="button" class="model-tag-preset" data-model-tag="FACIAL" aria-pressed="false">FACIAL</button>
+                        <button type="button" class="model-tag-preset" data-model-tag="TEEN" aria-pressed="false">TEEN</button>
+                        <button type="button" class="model-tag-preset" data-model-tag="MILF" aria-pressed="false">MILF</button>
+                    </div>
+                </div>
+
+                <fieldset class="model-links-editor">
+                    <legend data-i18n="models.linksLabel">Links do perfil</legend>
+                    <div id="modelLinks"></div>
+                    <button id="addModelLink" class="model-form-cancel" type="button" data-i18n="models.addLink">+ Adicionar link</button>
+                </fieldset>
+
+                <label for="modelPhoto" data-i18n="models.photoLabel">Foto</label>
+                <input id="modelPhoto" name="photo" type="file" accept="image/*">
+                <small id="modelPhotoHelp" class="model-photo-help" data-i18n="models.photoOptionalCreate">Opcional. Baixe uma imagem da busca, volte aqui e selecione-a; PNG/JPEG/BMP podem ser otimizadas ao salvar.</small>
+                <section id="modelPhotoCropEditor" class="model-photo-crop-editor" aria-labelledby="modelPhotoCropHeading" hidden>
+                    <h3 id="modelPhotoCropHeading" data-i18n="models.cropHeading">Ajustar corte do card</h3>
+                    <div id="modelPhotoCropFrame" class="model-photo-crop-stage" tabindex="0" role="application" data-i18n-aria-label="models.cropDragHelp">
+                        <img id="modelPhotoCropPreview" alt="">
+                        <div id="modelPhotoCropSelection" class="model-photo-crop-selection"></div>
+                    </div>
+                    <small data-i18n="models.cropDragHelp">Arraste a imagem para reposicionar.</small>
+                    <label for="modelPhotoCropZoom" data-i18n="models.cropZoom">Zoom</label>
+                    <input id="modelPhotoCropZoom" type="range" min="1" max="3" step="0.01" value="1">
+                    <button id="resetModelPhotoCrop" class="model-form-cancel" type="button" data-i18n="models.cropReset">Centralizar imagem</button>
+                </section>
+
+                <label for="modelCategory" data-i18n="models.categoryLabel">Categoria</label>
+                <select id="modelCategory" name="category" required>
+                    <option value="1" data-i18n="models.category1">OF</option>
+                    <option value="2" data-i18n="models.category2">PS</option>
+                    <option value="3" data-i18n="models.category3">CG</option>
+                    <option value="4" data-i18n="models.category4">AM</option>
+                    <option value="5" data-i18n="models.category5">TS</option>
+                </select>
+
+                <label for="modelRarity" data-i18n="models.rarityLabel">Raridade</label>
+                <select id="modelRarity" name="rarity" required>
+                    <option value="mythic" data-i18n="models.rarityMythic">Favoritas</option>
+                    <option value="legendary" data-i18n="models.rarityLegendary">Rainhas</option>
+                    <option value="epic" data-i18n="models.rarityEpic">Excelentes</option>
+                    <option value="rare" data-i18n="models.rarityRare">Muito boas</option>
+                    <option value="uncommon" data-i18n="models.rarityUncommon">Boas</option>
+                    <option value="common" data-i18n="models.rarityCommon" selected>Outras</option>
+                </select>
+
+                <p id="modelFormStatus" class="model-form-status" role="status" aria-live="polite" hidden></p>
+
+                <div class="model-form-actions">
+                    <button id="cancelModelForm" class="model-form-cancel" type="button" data-i18n="models.cancel">Cancelar</button>
+                    <button class="creator-button" type="submit" data-i18n="models.save">Salvar modelo</button>
+                </div>
+            </form>
+        </dialog>
+
+        <dialog id="deleteModelDialog" class="model-dialog model-confirm-dialog" aria-labelledby="deleteModelHeading" aria-describedby="deleteModelPrompt">
+            <div class="model-form">
+                <div class="model-form-heading">
+                    <h2 id="deleteModelHeading" data-i18n="models.deleteHeading">Excluir card</h2>
+                    <button id="closeDeleteModelDialog" class="model-dialog-close" type="button" aria-label="Fechar" data-i18n-aria-label="models.close">×</button>
+                </div>
+                <p id="deleteModelPrompt"></p>
+                <div class="model-form-actions">
+                    <button id="cancelDeleteModel" class="model-form-cancel" type="button" data-i18n="models.cancel">Cancelar</button>
+                    <button id="confirmDeleteModel" class="models-confirm-delete" type="button" data-i18n="models.delete">Excluir card</button>
+                </div>
+            </div>
+        </dialog>
+
+        <p id="modelsPageStatus" class="models-page-status" role="alert" hidden></p>
+        <p id="modelTagSearchStatus" class="models-page-status" role="status" aria-live="polite" hidden></p>
+        <p class="models-drag-hint" data-i18n="models.dragHint">Arraste os cards para reordenar ou movê-los entre categorias e subcategorias.</p>
+
+        <section class="model-categories" aria-label="Categorias de modelos" data-i18n-aria-label="models.categoriesLabel">
+
+            <details class="model-category" open data-category="1">
+                <summary data-i18n="models.category1">OF</summary>
+                <div class="model-rarity-groups" id="modelGroups1"></div>
+            </details>
+
+            <details class="model-category" data-category="2">
+                <summary data-i18n="models.category2">PS</summary>
+                <div class="model-rarity-groups" id="modelGroups2"></div>
+            </details>
+
+            <details class="model-category" data-category="3">
+                <summary data-i18n="models.category3">CG</summary>
+                <div class="model-rarity-groups" id="modelGroups3"></div>
+            </details>
+
+            <details class="model-category" data-category="4">
+                <summary data-i18n="models.category4">AM</summary>
+                <div class="model-rarity-groups" id="modelGroups4"></div>
+            </details>
+
+            <details class="model-category" data-category="5">
+                <summary data-i18n="models.category5">TS</summary>
+                <div class="model-rarity-groups" id="modelGroups5"></div>
+            </details>
+
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <span data-i18n="footer.tagline">Video Studio · Ferramentas para vídeo</span>
+        <a href="patch-notes.html" data-i18n="footer.notes">Notas de atualização</a>
+        <a href="como-usar.html" data-i18n="footer.guide">Como usar o site</a>
+    </footer>
+
+    <script src="language.js"></script>
+    <script src="model-link-utils.js"></script>
+    <script src="model-photo-utils.js"></script>
+    <script src="modelos.js"></script>
+    <script src="limpar-modelos-locais.js"></script>
+    <script src="feedback.js"></script>
+
+</body>
+
+</html>

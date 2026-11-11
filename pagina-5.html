@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title data-i18n="title.page5">Player aleatório de vídeos</title>
+
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <link
+        rel="stylesheet"
+        href="teste-sincronizacao-v2.css">
+
+</head>
+
+<body data-theme="dark">
+
+    <div
+        class="background-decorations"
+        aria-hidden="true">
+    </div>
+
+    <nav class="site-nav" aria-label="Navegação principal" data-i18n-aria-label="nav.label">
+
+        <div class="site-nav-links">
+            <a href="index.html" data-i18n="nav.home">Início</a>
+            <a href="funcionalidade.html" data-i18n="nav.creator">Criar GIF, clipe e print</a>
+            <a href="pagina-3.html" data-i18n="nav.page3">Loop de vídeo</a>
+            <a href="pagina-4.html" data-i18n="nav.page4">Video Rhythm</a>
+            <a href="pagina-5.html" aria-current="page" data-i18n="nav.page5">Player aleatório</a>
+            <a href="modelos.html" data-i18n="nav.models">Modelos</a>
+        </div>
+
+        <div class="language-selector">
+            <button id="languageButton" class="language-button" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="languageMenu">
+                <span id="languageFlag" aria-hidden="true">🇧🇷</span>
+                <span id="languageName">Português</span>
+                <span class="language-chevron" aria-hidden="true">▾</span>
+            </button>
+            <div id="languageMenu" class="language-menu" hidden>
+                <button type="button" data-language="pt-BR"><span aria-hidden="true">🇧🇷</span><span data-i18n="language.portuguese">Português (Brasil)</span></button>
+                <button type="button" data-language="en"><span aria-hidden="true">🇺🇸</span><span data-i18n="language.english">English</span></button>
+            </div>
+        </div>
+
+        <a class="profile-nav-link" href="perfil.html" data-i18n-aria-label="nav.profile" data-i18n-title="nav.profile">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="8" r="4"></circle>
+                <path d="M4.5 21a7.5 7.5 0 0 1 15 0"></path>
+            </svg>
+        </a>
+
+        <div class="site-settings-selector">
+            <button id="siteSettingsButton" class="language-button site-settings-button" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="siteSettingsMenu" data-i18n-aria-label="siteSettings.button" data-i18n-title="siteSettings.button">
+                <span class="windows-icon" aria-hidden="true">&#xE713;</span>
+            </button>
+            <div id="siteSettingsMenu" class="site-settings-menu" hidden>
+                <label class="settings-option">
+                    <input type="checkbox" id="siteLightMode">
+                    <span data-i18n="siteSettings.lightMode">Light mode</span>
+                </label>
+            </div>
+        </div>
+
+    </nav>
+
+    <main class="container">
+
+        <section class="random-player-panel" aria-labelledby="randomPlayerHeading">
+
+            <header class="random-player-heading">
+                <h1 id="randomPlayerHeading" data-i18n="randomPlayer.heading">Player aleatório de vídeos</h1>
+                <p data-i18n="randomPlayer.description">Escolha vídeos para reproduzi-los aleatoriamente, um de cada vez.</p>
+            </header>
+
+            <input
+                id="randomVideoInput"
+                type="file"
+                accept="video/*"
+                multiple
+                hidden>
+
+            <div class="random-player-toolbar">
+                <button id="chooseRandomVideos" class="creator-button" type="button">
+                    <span class="windows-icon" aria-hidden="true">&#xE714;</span>
+                    <span data-i18n="randomPlayer.chooseVideos">Selecionar vídeos</span>
+                </button>
+
+                <div class="settings-selector random-player-settings">
+                    <button
+                        id="randomPlayerSettingsButton"
+                        class="creator-button"
+                        type="button"
+                        aria-expanded="false"
+                        aria-controls="randomPlayerSettingsMenu">
+                        <span class="windows-icon" aria-hidden="true">&#xE713;</span>
+                        <span data-i18n="randomPlayer.settings">Configurações</span>
+                    </button>
+
+                    <div id="randomPlayerSettingsMenu" class="settings-menu random-player-settings-menu">
+                        <label class="random-player-duration" for="randomPlayerPreviewSize">
+                            <span data-i18n="randomPlayer.previewSize">Tamanho da janela do vídeo (px)</span>
+                            <input
+                                id="randomPlayerPreviewSize"
+                                type="range"
+                                min="220"
+                                max="720"
+                                step="1"
+                                value="428">
+                            <output id="randomPlayerPreviewSizeValue" for="randomPlayerPreviewSize">428 px</output>
+                        </label>
+                        <label class="random-player-duration" for="randomVideoDuration">
+                            <span data-i18n="randomPlayer.duration">Tempo por vídeo (segundos)</span>
+                            <input
+                                id="randomVideoDuration"
+                                type="number"
+                                min="1"
+                                max="3600"
+                                step="1"
+                                value="30">
+                        </label>
+                        <label class="random-player-option">
+                            <input id="randomVideoStartRandom" type="checkbox">
+                            <span data-i18n="randomPlayer.randomStart">Iniciar cada vídeo em um tempo aleatório</span>
+                        </label>
+                        <label class="random-player-option">
+                            <input id="randomVideoFade" type="checkbox" checked>
+                            <span data-i18n="randomPlayer.fade">Usar transição entre vídeos</span>
+                        </label>
+                        <label class="random-player-duration" for="randomVideoTransitionMode">
+                            <span data-i18n="randomPlayer.transitionMode">Estilo da transição</span>
+                            <select id="randomVideoTransitionMode">
+                                <option value="fade" data-i18n="randomPlayer.transitionFade">Fade in/out</option>
+                                <option value="crossfade" data-i18n="randomPlayer.transitionCrossfade">Suave (com transparência)</option>
+                            </select>
+                        </label>
+                        <label class="random-player-duration" for="randomVideoFadeDuration">
+                            <span data-i18n="randomPlayer.fadeDuration">Duração da transição (segundos)</span>
+                            <input
+                                id="randomVideoFadeDuration"
+                                type="range"
+                                min="0.1"
+                                max="2"
+                                step="0.1"
+                                value="0.5">
+                            <output id="randomVideoFadeDurationValue" for="randomVideoFadeDuration">0,5 s</output>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div id="randomPlayerPreview" class="creator-preview random-player-preview">
+                <video
+                    id="randomPlayerVideo"
+                    class="is-active"
+                    controls
+                    playsinline
+                    preload="metadata"
+                    loop
+                    aria-label="Reprodutor de vídeo"
+                    data-i18n-aria-label="randomPlayer.video">
+                </video>
+
+                <video
+                    id="randomPlayerNextVideo"
+                    class="random-player-next-video"
+                    playsinline
+                    preload="metadata"
+                    loop
+                    aria-hidden="true">
+                </video>
+
+                <div id="randomPlayerEmptyState" class="creator-empty-state">
+                    <span class="creator-empty-icon" aria-hidden="true">&#xE8B2;</span>
+                    <p data-i18n="randomPlayer.empty">Selecione vídeos para começar.</p>
+                </div>
+            </div>
+
+            <label class="random-player-volume" for="randomPlayerVolume">
+                <span data-i18n="randomPlayer.volume">Volume</span>
+                <input
+                    id="randomPlayerVolume"
+                    type="range"
+                    min="0"
+                    max="1"
+                    step="0.01"
+                    value="1"
+                    aria-label="Volume do vídeo"
+                    data-i18n-aria-label="randomPlayer.volume">
+                <output id="randomPlayerVolumeValue" for="randomPlayerVolume">100%</output>
+            </label>
+
+            <p id="randomPlayerStatus" class="creator-status" role="status" aria-live="polite" data-i18n="randomPlayer.statusEmpty">
+                Selecione um ou mais vídeos para iniciar.
+            </p>
+
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+
+        <span data-i18n="footer.tagline">Video Studio · Ferramentas para vídeo</span>
+        <a href="patch-notes.html" data-i18n="footer.notes">Notas de atualização</a>
+        <a href="como-usar.html" data-i18n="footer.guide">Como usar o site</a>
+
+    </footer>
+
+    <script src="language.js"></script>
+    <script src="pagina-5.js"></script>
+    <script src="feedback.js"></script>
+
+</body>
+
+</html>
